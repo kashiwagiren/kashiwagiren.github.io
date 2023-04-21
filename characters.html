@@ -57,9 +57,33 @@
             margin-bottom: 1rem;
           }
         </style>
+        <style>
+          .back-to-top {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            transition: background-color 0.3s, color 0.3s;
+          }
+
+          .back-to-top:hover {
+            background-color: #555;
+            color: #fff;
+          }
+        </style>
         <script>
           function goToHomePage() {
             location.reload();
+          }
+          function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           }
         </script>
       </head>
@@ -103,6 +127,7 @@
   <footer>
     <p>&copy; 2023 Project Zankyou by Kieth. All rights reserved.</p>
   </footer>
+  <a href="#" class="back-to-top" onclick="scrollToTop(); return false;">Back to the top</a>
   <script>
     const characters = [
       {
