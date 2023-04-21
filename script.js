@@ -30,6 +30,22 @@
       // Add more characters here...
     ];
 
+    const backToTopButton = document.getElementById("backToTop");
+
+    // Hide the button initially
+    backToTopButton.style.display = "none";
+
+    // Add the event listener for scroll event
+    window.addEventListener("scroll", () => {
+    // Show the button if the user has scrolled down, otherwise hide it
+    if (window.scrollY > 0) {
+      backToTopButton.style.display = "inline-block";
+    } else {
+      backToTopButton.style.display = "none";
+    }
+    });
+
+
     const charactersContainer = document.querySelector(".characters-container");
 
     function renderCharacters(characters) {
