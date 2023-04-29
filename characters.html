@@ -1,125 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>残響</title>
-        <link rel="stylesheet" href="styles.css">
-        <style>
-          .characters-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            padding: 1.5rem;
-          }
-      
-          @media (min-width: 600px) {
-            .characters-container {
-              grid-template-columns: repeat(3, 1fr);
-            }
-          }
-      
-          @media (min-width: 900px) {
-            .characters-container {
-              grid-template-columns: repeat(4, 1fr);
-            }
-          }
-      
-          @media (min-width: 1200px) {
-            .characters-container {
-              grid-template-columns: repeat(6, 1fr);
-            }
-          }
-      
-          .character-card {
-            background-color: #f8f8f8;
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-          }
-      
-          .character-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-          }
-      
-          .character-card h3 {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 1rem 0;
-            padding: 0 1rem;
-          }
-      
-          .character-card p {
-            font-size: 1rem;
-            padding: 0 1rem;
-            margin-bottom: 1rem;
-          }
-        </style>
-        <style>
-          .back-to-top {
-            display: inline-block;
-            background-color: #333;
-            color: #fff;
-            padding: 8px 12px;
-            border-radius: 4px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 14px;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            transition: background-color 0.3s, color 0.3s;
-          }
-
-          .back-to-top:hover {
-            background-color: #555;
-            color: #fff;
-          }
-        </style>
-        <script>
-          function goToHomePage() {
-            location.reload();
-          }
-          function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }
-        </script>
-      </head>
-
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>残響 - Characters</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
 <body>
   <header>
     <nav>
       <ul>
         <li><a href="./" onclick="goToindex()">Home</a></li>
-        <li><a href="./characters">Characters</a></li>
-        <li><a href="./profile">Profile</a></li>
-        <li><a href="./gallery">Gallery</a></li>
-        <li><a href="./about">About</a></li>
+        <li><a href="./characters.html">Characters</a></li>
+        <li><a href="./profile.html">Profile</a></li>
+        <li><a href="./gallery.html">Gallery</a></li>
+        <li><a href="./about.html">About</a></li>
       </ul>
     </nav>
   </header>
-
   <main>
     <h1 class="page-title">Favorite Characters</h1> <!-- Add the class here -->
-    <section class="characters">
-      <div class="characters-container"></div>
-    </section>
-  </main>
-
-  <style>
-    .page-title {
-      text-align: center;
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #333;
-      margin-top: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-  </style>
-
-  <main>
     <section class="characters">
       <div class="characters-container"></div>
     </section>
@@ -128,91 +28,14 @@
     <p>&copy; 2023 Project Zankyou by Kieth. All rights reserved.</p>
   </footer>
   <a href="#" id="backToTop" class="back-to-top" onclick="scrollToTop(); return false;">Back to the top</a>
-  <script>
-    const characters = [
-      {
-        name: "Tanjiro Kamado",
-        image: "https://s4.anilist.co/file/anilistcdn/character/large/b126071-BTNEc1nRIv68.png",
-        description: "竈門炭治郎",
-      },
-      {
-        name: "Makima",
-        image: "https://s4.anilist.co/file/anilistcdn/character/large/b137080-SnM8uk7GEgPl.png",
-        description: "マキマ",
-      },
-      {
-        name: "Rimuru Tempest",
-        image: "https://s4.anilist.co/file/anilistcdn/character/large/b123962-eL9yGV0NLMF7.png",
-        description: "リムル・テンペスト",
-      },
-      {
-        name: "Kyoujurou Rengoku",
-        image: "https://s4.anilist.co/file/anilistcdn/character/large/b129133-VlTPowwt68rJ.png",
-        description: "煉獄杏寿郎",
-      },
-      {
-        name: "Nino Nakano",
-        image: "https://s4.anilist.co/file/anilistcdn/character/large/b126372-DtorHRgQaYUJ.png",
-        description: "中野二乃",
-      },
-      {
-        name: "Kazuma Satou",
-        image: "https://s4.anilist.co/file/anilistcdn/character/large/b89364-7Th8Tv1XKJtt.png",
-        description: "佐藤和真",
-      },
-      {
-        name: "Hitagi Senjougahara",
-        image: "https://s4.anilist.co/file/anilistcdn/character/large/b22037-vMV86oknAmLT.jpg",
-        description: "戦場ヶ原ひたぎ",
-      },
-      {
-        name: "Dio Brando",
-        image: "https://s4.anilist.co/file/anilistcdn/character/large/b4004-nPubXwI7zvZo.png",
-        description: "ディオ・ブランドー",
-      },
-      {
-        name: "Kamina",
-        image: "https://s4.anilist.co/file/anilistcdn/character/large/b2075-sWb5Xz76JWdX.png",
-        description: "カミナ",
-      },
-      {
-        name: "Vladilena Milizé",
-        image: "https://s4.anilist.co/file/anilistcdn/character/large/b141061-jqIhB9jmClQ3.png",
-        description: "ヴラディレーナ・ミリーゼ",
-      },
-      {
-        name: "Revy",
-        image: "https://s4.anilist.co/file/anilistcdn/character/large/b458-tlKqPcuR287U.png",
-        description: "レヴィ",
-      },
-      {
-        name: "Hitori Gotou",
-        image: "https://s4.anilist.co/file/anilistcdn/character/large/b257562-97fPDk3TxIGR.png",
-        description: "後藤ひとり",
-      },
-      // Add more characters here...
-    ];
-
-    const charactersContainer = document.querySelector(".characters-container");
-
-    function renderCharacters(characters) {
-      charactersContainer.innerHTML = "";
-
-      characters.forEach((character) => {
-        const characterCard = document.createElement("div");
-        characterCard.classList.add("character-card");
-
-        characterCard.innerHTML = `
-          <img src="${character.image}" alt="${character.name}" />
-          <h3>${character.name}</h3>
-          <p>${character.description}</p>
-        `;
-
-        charactersContainer.appendChild(characterCard);
-      });
-    }
-
-    renderCharacters(characters);
-  </script>
+  <div id="characterModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="characterName"></h2>
+      <img id="characterImage" src="" alt="Character Image">
+      <p id="characterDescription"></p>
+    </div>
+  </div>
+  <script src="main.js"></script>
 </body>
 </html>
