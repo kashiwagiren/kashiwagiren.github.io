@@ -66,7 +66,67 @@
         name: "Hitori Gotou",
         image: "https://s4.anilist.co/file/anilistcdn/character/large/b257562-97fPDk3TxIGR.png",
         description: "後藤ひとり",
-      }
+      },
+      {
+        name: "Kaguya Shinomiya",
+        image: "https://s4.anilist.co/file/anilistcdn/character/large/b120649-JMKQgPmVq6d3.png",
+        description: "四宮かぐや",
+      },
+      {
+        name: "Kiyotaka Ayanokouji",
+        image: "https://s4.anilist.co/file/anilistcdn/character/large/b123212-ewZgUQr9vvEM.png",
+        description: "綾小路清隆",
+      },
+      {
+        name: "Gintoki Sakata",
+        image: "https://s4.anilist.co/file/anilistcdn/character/large/b672-gqeWnyXzOjyX.png",
+        description: "坂田銀時",
+      },
+      {
+        name: "Shouyo Hinata",
+        image: "https://s4.anilist.co/file/anilistcdn/character/large/b64769-WoWlCMLLgJ14.png",
+        description: "日向翔陽",
+      },
+      {
+        name: "Tobio Kageyama",
+        image: "https://s4.anilist.co/file/anilistcdn/character/large/b64771-BuCVs7B8bBdh.png",
+        description: "https://s4.anilist.co/file/anilistcdn/character/large/b64771-BuCVs7B8bBdh.png",
+      },
+      {
+        name: "Shinobu Oshino",
+        image: "https://s4.anilist.co/file/anilistcdn/character/large/b23602-Z4MDNYcoAWZu.png",
+        description: "忍野忍",
+      },
+      {
+        name: "Roy Mustang",
+        image: "https://s4.anilist.co/file/anilistcdn/character/large/b68-moBLY2WO2am3.png",
+        description: "ロイ・マスタング",
+      },
+      {
+        name: "Yato",
+        image: "https://s4.anilist.co/file/anilistcdn/character/large/b84677-Vgd7MBg6EAzK.png",
+        description: "夜ト",
+      },
+      {
+        name: "Jotaro Kuujou",
+        image: "https://s4.anilist.co/file/anilistcdn/character/large/b4003-gWDSEGbeOAll.png",
+        description: "空条承太郎",
+      },
+      {
+        name: "Giyuu Tomioka",
+        image: "https://s4.anilist.co/file/anilistcdn/character/large/b130050-qsLThJs5VIbz.png",
+        description: "冨岡義勇",
+      },
+      {
+        name: "Erwin Smith",
+        image: "https://s4.anilist.co/file/anilistcdn/character/large/b46496-Mu86MENd5wNB.png",
+        description: "エルヴィン・スミス",
+      },
+      {
+        name: "Ai Hayasaka",
+        image: "https://s4.anilist.co/file/anilistcdn/character/large/b121104-7TYRl3EEsDYU.png",
+        description: "早坂愛",
+      },
   ];
 
   const modal = document.getElementById("characterModal");
