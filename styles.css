@@ -208,7 +208,7 @@ footer {
 }
 
 .modal {
-  display: block;
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -223,6 +223,9 @@ footer {
 }
 
 .modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 1;
   visibility: visible;
 }
@@ -232,7 +235,9 @@ footer {
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  position: relative;
+  max-width: 80%;
+  max-height: 80%;
 }
 
 .close {
@@ -241,6 +246,15 @@ footer {
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  background-color: #fff;
+  border-radius: 50%;
+  line-height: 28px;
+  text-align: center;
+  width: 28px;
+  height: 28px;
 }
 
 .close:hover,
@@ -250,9 +264,15 @@ footer {
   cursor: pointer;
 }
 
+.character-image {
+  width: 100%;
+  height: auto;
+}
+
 @media (max-width: 768px) {
   .modal-content {
-    width: 90%;
+    max-width: 90%;
+    max-height: 90%;
   }
 }
 

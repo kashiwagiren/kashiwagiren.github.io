@@ -150,14 +150,10 @@
   };
 
   function showCharacterModal(character) {
-    const characterName = document.getElementById("characterName");
     const characterImage = document.getElementById("characterImage");
-    const characterDescription = document.getElementById("characterDescription");
   
-    characterName.textContent = character.name;
     characterImage.src = character.image;
     characterImage.alt = character.name;
-    characterDescription.textContent = character.description;
   
     modal.style.display = "block";
     modal.classList.add("show");
