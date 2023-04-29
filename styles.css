@@ -16,6 +16,8 @@ body {
 header {
   background-color: #1a1a1a;
   padding: 1rem 0;
+  display: flex;
+  justify-content: center;
 }
 
 nav {
@@ -27,6 +29,7 @@ nav {
 
 nav ul {
   list-style-type: none;
+  display: flex;
 }
 
 nav ul li {
@@ -56,6 +59,14 @@ nav ul li a:hover {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+}
+
+nav ul li {
+  margin: 0.5rem;
+}
+
+.main {
+  padding: 1rem;
 }
 
 .banner {
