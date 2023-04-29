@@ -90,7 +90,7 @@
       {
         name: "Tobio Kageyama",
         image: "https://s4.anilist.co/file/anilistcdn/character/large/b64771-BuCVs7B8bBdh.png",
-        description: "https://s4.anilist.co/file/anilistcdn/character/large/b64771-BuCVs7B8bBdh.png",
+        description: "影山飛雄",
       },
       {
         name: "Shinobu Oshino",

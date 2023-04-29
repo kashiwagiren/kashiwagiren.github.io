@@ -44,6 +44,14 @@ nav ul li a:hover {
   color: #f1c40f;
 }
 
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 0.5rem 0;
+  }
+}
+
 .main {
   max-width: 1200px;
   margin: 0 auto;
@@ -231,6 +239,12 @@ footer {
   cursor: pointer;
 }
 
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90%;
+  }
+}
+
 .back-to-top {
   position: fixed;
   bottom: -2rem;
@@ -268,7 +282,13 @@ footer {
   padding: 2rem;
   border: 2px solid #000;
   max-width: 500px;
-  margin: 2rem auto;
+  margin: 14rem auto;
+}
+
+@media (max-width: 768px) {
+  .profile-section {
+    padding: 1rem;
+  }
 }
 
 .profile-image {
@@ -276,6 +296,15 @@ footer {
   height: 150px;
   border-radius: 50%;
   overflow: hidden;
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+}
+
+.social-links li {
+  margin-right: 0.5rem;
 }
 
 .profile-image img {
@@ -314,52 +343,6 @@ footer {
   background-attachment: fixed;
 }
 
-.profile-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 2rem;
-  border: 2px solid #000;
-  max-width: 500px;
-  margin: 14rem auto;
-}
-
-.profile-image {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.profile-image img {
-  width: 100%;
-  height: auto;
-}
-
-.profile-info {
-  margin-top: 1rem;
-}
-
-.social-links {
-  display: flex;
-  list-style-type: none;
-  padding: 0;
-}
-
-.social-links li {
-  margin-right: 1rem;
-}
-
-.social-links a {
-  text-decoration: none;
-  color: #000;
-}
-
-.social-links a:hover {
-  text-decoration: underline;
-}
-
 html, body {
   height: 100%;
   margin: 0;
@@ -377,6 +360,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .about-page {
@@ -385,4 +369,11 @@ html, body {
   align-items: center;
   min-height: calc(100vh - 100px - 40px);
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    padding: 1rem;
+    font-size: 1rem;
+  }
 }
