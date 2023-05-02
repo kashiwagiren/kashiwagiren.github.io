@@ -408,3 +408,99 @@ html, body {
     font-size: 1rem;
   }
 }
+
+.gallery {
+  padding: 2rem;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1rem;
+}
+
+figure {
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+figure img:hover {
+  transform: scale(1.1);
+}
+
+figcaption {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Gallery modal styles */
+.modal-gallery {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-content-gallery {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.modal-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.close-modal-gallery {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
+.close-modal-gallery:focus {
+  outline: none;
+}
+
+/* Back to top button styles */
+#backToTop {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
