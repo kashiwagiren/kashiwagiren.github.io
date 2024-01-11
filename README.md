@@ -1,3 +1,3 @@
 # Site Preview
 
-https://kashiwagiren.github.io/
+https://kashiwagiren.github.io/Site/
