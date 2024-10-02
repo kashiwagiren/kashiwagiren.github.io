@@ -26,9 +26,16 @@ h1 {
   font-size: 2.5rem; /* Slightly smaller for retro feel */
   font-weight: 400;
   letter-spacing: 1px;
-  transition: opacity 0.5s ease; /* Smooth transition */
+  transition: opacity 0.5s ease, transform 2s ease; /* Smooth transition */
   cursor: default; /* Change cursor to pointer on hover */
   position: relative; /* Required for proper positioning */
+  opacity: 0; /* Initially hidden */
+  transform: translateY(50px); /* Start below */
+}
+
+h1.show {
+  opacity: 1; /* Fade in */
+  transform: translateY(0); /* Move to original position */
 }
 
 h1::after {
@@ -44,14 +51,11 @@ h1::after {
   transform: translateX(-20px); /* Start slightly to the left */
 }
 
-/* Show the English text on hover */
-h1:hover {
-  opacity: 0; /* Hide Japanese text */
-}
+
 
 h1:hover::after {
   opacity: 1; /* Show English text */
-  transform: translateX(0); /* Move into original position */
+  transform: translateX(-5px); /* Move into original position */
 }
 
 p.typed-text {
