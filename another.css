@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+body {
+    background-color: #000; /* Black background */
+    font-family: 'VT323', monospace; /* Retro font for English */
+    display: flex;
+    height: 100vh;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    color: #fff; /* White text */
+    overflow: hidden;
+    flex-direction: column;
+}
+  
+#home .intro {
+    text-align: center;
+    position: relative; /* Position for the absolute child */
+}
+  
+h1 {
+    font-family: 'DotGothic16', sans-serif; /* Retro font for Japanese */
+    font-size: 2.5rem; /* Slightly smaller for retro feel */
+    font-weight: 400;
+    letter-spacing: 1px;
+    transition: opacity 0.5s ease; /* Smooth transition */
+    cursor: default; /* Change cursor to pointer on hover */
+    position: relative; /* Required for proper positioning */
+}
+
+h1::after {
+    content: "Hello, I'm Kieth."; /* English translation */
+    font-family: 'VT323', monospace; /* Retro font for English */
+    font-size: 2.5rem; /* Match the size of the Japanese text */
+    color: #fff; /* White text */
+    position: absolute; /* Position overlay on top */
+    top: -40px; /* Align with the Japanese text */
+    left: 0; /* Align with the Japanese text */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth fade-in and movement */
+    transform: translateX(-20px); /* Start slightly to the left */
+}
+
+/* Show the English text on hover */
+h1:hover {
+    opacity: 0; /* Hide Japanese text */
+}
+
+h1:hover::after {
+    opacity: 1; /* Show English text */
+    transform: translateX(0); /* Move into original position */
+}
+
+p.typed-text {
+    font-family: 'VT323', monospace; /* Retro font for English */
+    font-size: 1.2rem; /* Smaller text size for the subtext */
+    font-weight: 300;
+    margin-top: 20px;
+    opacity: 0; /* Initially hidden */
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: default;
+}
+  
+@keyframes slideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
