@@ -12,8 +12,14 @@ body {
   justify-content: center; /* Center content horizontally */
   align-items: center; /* Center content vertically */
   color: #fff; /* White text */
-  overflow: hidden;
+  overflow-x: hidden;
   flex-direction: column;
+  scroll-snap-type: y mandatory;
+}
+
+body.zoom-out {
+  transform: scale(0.95); /* Slight zoom-out effect */
+  background-color: #fff;
 }
 
 #home .intro {
@@ -51,8 +57,6 @@ h1::after {
   transform: translateX(-20px); /* Start slightly to the left */
 }
 
-
-
 h1:hover::after {
   opacity: 1; /* Show English text */
   transform: translateX(-5px); /* Move into original position */
@@ -67,6 +71,31 @@ p.typed-text {
   white-space: nowrap;
   overflow: hidden;
   cursor: default;
+}
+
+.down-button {
+  position: absolute;
+  bottom: 50px; /* Move the button to the bottom */
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: top 0.3s ease, color 0.3s ease, opacity 0.5s ease;
+  opacity: 0; /* Initially hidden */
+  top: 900px;
+  left: 50%; /* Center the button */
+  transform: translateX(-50%);
+}
+
+.down-button:hover {
+  top: 880px; /* Moves the button up by 5px smoothly */
+  color: #ddd;
+  opacity: 1; /* Initially hidden */
+}
+
+.down-button.clicked {
+  transform: scale(1.5); /* Zoom in effect on click */
 }
 
 @keyframes slideUp {
