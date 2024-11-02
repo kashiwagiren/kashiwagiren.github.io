@@ -1,110 +1,149 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body {
-  background-color: #000; /* Black background */
-  font-family: 'VT323', monospace; /* Retro font for English */
-  display: flex;
-  height: 100vh;
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
-  color: #fff; /* White text */
-  overflow-x: hidden;
-  flex-direction: column;
-  scroll-snap-type: y mandatory;
+body{
+    margin: 0;
 }
 
-body.zoom-out {
-  transform: scale(0.95); /* Slight zoom-out effect */
-  background-color: #fff;
+.container{
+    scroll-snap-type: y mandatory;
+    overflow: scroll;
+    height: 100vh;
 }
 
-#home .intro {
-  text-align: center;
-  position: relative; /* Position for the absolute child */
+section{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
 }
 
-h1 {
-  font-family: 'DotGothic16', sans-serif; /* Retro font for Japanese */
-  font-size: 2.5rem; /* Slightly smaller for retro feel */
-  font-weight: 400;
-  letter-spacing: 1px;
-  transition: opacity 0.5s ease, transform 2s ease; /* Smooth transition */
-  cursor: default; /* Change cursor to pointer on hover */
-  position: relative; /* Required for proper positioning */
-  opacity: 0; /* Initially hidden */
-  transform: translateY(50px); /* Start below */
+.intro-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    width: 100%;
+    height: 100vh;
 }
 
-h1.show {
-  opacity: 1; /* Fade in */
-  transform: translateY(0); /* Move to original position */
-}
-
-h1::after {
-  content: "Hello, I'm Kieth."; /* English translation */
-  font-family: 'VT323', monospace; /* Retro font for English */
-  font-size: 2.5rem; /* Match the size of the Japanese text */
-  color: #fff; /* White text */
-  position: absolute; /* Position overlay on top */
-  top: -40px; /* Align with the Japanese text */
-  left: 0; /* Align with the Japanese text */
-  opacity: 0; /* Initially hidden */
-  transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth fade-in and movement */
-  transform: translateX(-20px); /* Start slightly to the left */
-}
-
-h1:hover::after {
-  opacity: 1; /* Show English text */
-  transform: translateX(-5px); /* Move into original position */
-}
-
-p.typed-text {
-  font-family: 'VT323', monospace; /* Retro font for English */
-  font-size: 1.2rem; /* Smaller text size for the subtext */
-  font-weight: 300;
-  margin-top: 20px;
-  opacity: 0; /* Initially hidden */
-  white-space: nowrap;
-  overflow: hidden;
-  cursor: default;
-}
-
-.down-button {
-  position: absolute;
-  bottom: 50px; /* Move the button to the bottom */
-  background: transparent;
-  color: white;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  transition: top 0.3s ease, color 0.3s ease, opacity 0.5s ease;
-  opacity: 0; /* Initially hidden */
-  top: 900px;
-  left: 50%; /* Center the button */
-  transform: translateX(-50%);
-}
-
-.down-button:hover {
-  top: 880px; /* Moves the button up by 5px smoothly */
-  color: #ddd;
-  opacity: 1; /* Initially hidden */
-}
-
-.down-button.clicked {
-  transform: scale(1.5); /* Zoom in effect on click */
-}
-
-@keyframes slideUp {
-  0% {
+.type {
+    color: #fff;
+    font-family: "DotGothic16", sans-serif;
+    font-size: 40px;
     opacity: 0;
-    transform: translateY(50px);
-  }
-  100% {
+    transform: translateY(-50px);
+    user-select: none;
+}
+
+.type:hover{
+    cursor: pointer;
+}
+
+.type.show{
     opacity: 1;
     transform: translateY(0);
-  }
+    transition: opacity 0.5s ease, transform 1.5s ease;
+}
+
+.type-1{
+    color: #fff;
+    font-family: "VT323", monospace;
+    font-size: 40px;
+    margin-right: 215px;
+    margin-bottom: 9.5px;
+    display: none;
+    user-select: none;
+    transition: opacity 0.5s ease;
+}
+
+.type-1:hover{
+    cursor: pointer;
+}
+
+.text{
+    color: #fff;
+    font-family: "VT323", monospace;
+    font-size: 1.8rem;
+    margin-right: 130px;
+    margin-bottom: 0.2rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    user-select: none;
+}
+
+.text.show{
+    transform: translateX(0px);
+    transition: opacity 0.5s ease, transform 1s ease;
+    opacity: 1;
+}
+
+.scrollDown {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    opacity: 0;
+    transform: translateY(5px);
+}
+
+.scrollDown svg {
+    transition: transform 0.3s;
+}
+
+.scrollDown:hover svg {
+    transform: translateY(5px);
+}
+
+.scrollDown.showButton{
+    opacity: 1;
+    transform: translateY(0px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.main-container{
+    background: #2F4F4F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+}
+
+.below-container{
+    background: #708090;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+}
+
+@media (max-width: 768px) {
+    .type {
+        font-size: 30px;
+        margin-bottom: 1px;
+    }
+
+    .type-1 {
+        font-size: 30px;
+        margin-right: 120px;
+        margin-bottom: 9.5px;
+    }
+
+    .text {
+        font-size: 1.5rem;
+        margin-right: 20px;
+    }
 }
