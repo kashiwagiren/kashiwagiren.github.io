@@ -4,36 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>こんにちは!</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DotGothic16&family=VT323&display=swap">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<section id="home"></section>
-        <div class="intro">
-          <h1 class="fade-in">こんにちは、キースです。</h1> <!-- "Hello, I'm Kieth" in Japanese -->
-          <p class="typed-text"></p>
+    <main>
+        <div class="container">
+            <section class="intro">
+                <div class="intro-container">
+                    <h2 class="type-1">Hello, I'm Kieth.</h2>
+                    <h1 class="type">こんにちは、キースです。</h1>
+                    <p class="text"></p>
+                    <button class="scrollDown">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#e8eaed">
+                            <path d="M440-800v487L216-537l-56 57 320 320 320-320-56-57-224 224v-487h-80Z"/>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+            <section class="main">
+                <div class="main-container">
+                    <h1>Second Page</h1>
+                </div>
+            </section>
+            <section class="below">
+                <div class="below-container">
+                    <h1>Third Page</h1>
+                </div>
+            </section>
         </div>
-        <button id="scrollDown" class="down-button">↓</button>
-        
-      </section>
-      <section id="nextPage">
-        <!--
-        <div class="page-container"></div>
-          <header>
-            <nav>
-              <ul>
-                <li><a href="./" onclick="goToindex()">Home</a></li>
-                <li><a href="./characters">Characters</a></li>
-                <li><a href="./profile">Profile</a></li>
-                <li><a href="./gallery">Gallery</a></li>
-                <li><a href="./about">About</a></li>
-              </ul>
-            </nav>
-          </header>
-        </div>
-        -->
-      </section>
-      <script src="script.js"></script>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
