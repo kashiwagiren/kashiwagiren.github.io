@@ -6,8 +6,8 @@ window.onload = () => {
     intro1.style.pointerEvents = 'none'
     button.style.pointerEvents = 'none'
 
-    setTimeout( () => { intro1.classList.add('show'), intro1.style.pointerEvents = 'auto' }, 4000 )
-    setTimeout( () => { button.classList.add('showButton'), button.style.pointerEvents = 'auto' }, 6000 )
+    setTimeout( () => { intro1.classList.add('show'), intro1.style.pointerEvents = 'auto' }, 300 )
+    setTimeout( () => { button.classList.add('showButton'), button.style.pointerEvents = 'auto' }, 500 )
     const textContent = "A Computer Engineering Student."
     let index = 0
     
@@ -25,6 +25,15 @@ window.onload = () => {
 document.addEventListener("DOMContentLoaded", () => {
     const scrollButton = document.querySelector('.scrollDown')
     const nextSection = document.querySelector('.main')
+    
+    scrollButton.addEventListener('click', () => {
+        nextSection.scrollIntoView({ behavior: 'smooth' })
+    })
+})
+
+document.addEventListener("DOMContentLoaded", () => {
+    const scrollButton = document.querySelector('.scrollUp')
+    const nextSection = document.querySelector('.intro')
     
     scrollButton.addEventListener('click', () => {
         nextSection.scrollIntoView({ behavior: 'smooth' })
@@ -74,3 +83,17 @@ function toggleSlideFade() {
 
 h1Element.addEventListener('click', toggleSlideFade)
 h2Element.addEventListener('click', toggleSlideFade)
+
+document.querySelector('.about').addEventListener('click', function() {
+    this.classList.toggle('clicked')
+})
+
+document.querySelector('.about').addEventListener('click', function() {
+    document.querySelector('.main').style.display = 'none'
+    document.querySelector('.frame-section').style.display = 'flex'
+})
+
+document.querySelector('.back-btn').addEventListener('click', function() {
+    document.querySelector('.frame-section').style.display = 'none'
+    document.querySelector('.main').style.display = 'flex'
+})
