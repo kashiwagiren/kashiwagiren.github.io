@@ -120,7 +120,7 @@ section {
     width: 100%; 
     height: 100vh; 
     position: relative; 
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .main-container::before {
@@ -169,19 +169,6 @@ section {
 .main-container .particle:nth-child(2) { top: 60%; left: 50%; animation-duration: 6s; }
 .main-container .particle:nth-child(3) { top: 80%; left: 75%; animation-duration: 7s; }
 
-.about {
-    font-size: 100px; 
-    font-family: "Poppins", sans-serif; 
-    position: relative; 
-    transition: transform 0.3s ease, color 0.3s ease; 
-}
-
-.about:hover {
-    cursor: pointer; 
-    transform: scale(1.1); 
-    color: #4682B4; 
-}
-
 .frame-section {
     display: none; 
     height: 100vh; 
@@ -189,6 +176,15 @@ section {
     justify-content: center; 
     align-items: center; 
     text-align: center; 
+}
+
+.intro {
+    opacity: 1;
+    transition: opacity 0.8s ease;
+}
+
+.intro.fade-out {
+    opacity: 0;
 }
 
 .frame-content {
@@ -205,20 +201,130 @@ section {
 }
 
 .back-btn {
-    padding: 10px 20px; 
-    font-size: 1rem; 
-    border: none; 
-    background: #d3d3d3; 
-    border-radius: 5px; 
-    position: relative; 
-    transition: 0.5s ease; 
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 2px solid #333;
+    background: transparent;
+    color: #333;
+    margin-top: 15px;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
 .back-btn:hover {
-    background: #333; 
-    cursor: pointer; 
-    transform: scale(1.1); 
-    transition: 0.5s ease; 
+    background: #333;
+    color: #fff;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+.profile-photo {
+    user-select: none;
+    pointer-events: none;
+}
+
+.profile-photo img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.about-text {
+    max-width: 500px;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+}
+
+.about-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.about-text p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    margin-bottom: 20px;
+    user-select: none;
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #4682B4;
+}
+
+.aaa{
+    user-select: none;
+}
+
+.aaa2{
+    user-select: none;
+}
+
+.cv-button {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #4682B4;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    font-weight: bold;
+    user-select: none;
+}
+
+.cv-button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    background-color: #315f7d;
+    color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.contact-button {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #4682B4;
+    margin-left: 15px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    font-weight: bold;
+    user-select: none;
+}
+
+.contact-button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    background-color: #315f7d;
+    color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .below-container {
