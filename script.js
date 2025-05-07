@@ -84,11 +84,11 @@ function toggleSlideFade() {
 h1Element.addEventListener('click', toggleSlideFade)
 h2Element.addEventListener('click', toggleSlideFade)
 
-document.querySelector('.about').addEventListener('click', function() {
+document.querySelector('.cv-button').addEventListener('click', function() {
     this.classList.toggle('clicked')
 })
 
-document.querySelector('.about').addEventListener('click', function() {
+document.querySelector('.cv-button').addEventListener('click', function() {
     document.querySelector('.main').style.display = 'none'
     document.querySelector('.frame-section').style.display = 'flex'
 })
@@ -97,3 +97,40 @@ document.querySelector('.back-btn').addEventListener('click', function() {
     document.querySelector('.frame-section').style.display = 'none'
     document.querySelector('.main').style.display = 'flex'
 })
+
+const intro = document.querySelector('.intro');
+        const mainSection = document.querySelector('.main');
+        const scrollBtn = document.querySelector('.scrollDown');
+        const pageTitle = document.querySelector('title');
+    
+        function activateMainView() {
+            if (!intro) return;
+    
+            intro.classList.add('fade-out');
+    
+            setTimeout(() => {
+                intro.style.display = 'none';
+                pageTitle.textContent = 'Home | My Portfolio';
+                sessionStorage.setItem('introHidden', 'true');
+            }, 800);
+        }
+    
+        if (sessionStorage.getItem('introHidden') === 'true') {
+            if (intro) intro.style.display = 'none';
+            if (pageTitle) pageTitle.textContent = 'Home | My Portfolio';
+        }
+    
+        scrollBtn?.addEventListener('click', activateMainView);
+    
+        if ('IntersectionObserver' in window && !sessionStorage.getItem('introHidden')) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        activateMainView();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+    
+            observer.observe(mainSection);
+        }
