@@ -110,14 +110,14 @@ const intro = document.querySelector('.intro');
     
             setTimeout(() => {
                 intro.style.display = 'none';
-                pageTitle.textContent = 'Home | My Portfolio';
+                pageTitle.textContent = 'My Portfolio';
                 sessionStorage.setItem('introHidden', 'true');
             }, 800);
         }
     
         if (sessionStorage.getItem('introHidden') === 'true') {
             if (intro) intro.style.display = 'none';
-            if (pageTitle) pageTitle.textContent = 'Home | My Portfolio';
+            if (pageTitle) pageTitle.textContent = 'My Portfolio';
         }
     
         scrollBtn?.addEventListener('click', activateMainView);
