@@ -204,9 +204,9 @@ section {
     padding: 12px 25px;
     font-size: 1rem;
     font-weight: 600;
-    border: 2px solid #333;
+    border: 2px solid #315f7d;
     background: transparent;
-    color: #333;
+    color: #2b5d7f;
     margin-top: 15px;
     border-radius: 8px;
     transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
@@ -427,3 +427,136 @@ section {
         margin-bottom: 40px;
     }
 }
+
+.frame-section {
+    background: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .frame-section .container {
+    background: #fff;
+    width: 90%;
+    max-width: 1200px;
+    height: 90vh;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .frame-section .sidebar {
+    background: #1f2937;
+    color: #fff;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    justify-content: space-between;
+  }
+  
+  .frame-section .sidebar h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .frame-section .section-title {
+    color: #9ca3af;
+    font-size: 0.85rem;
+    margin-top: 1.5rem;
+    letter-spacing: 1px;
+  }
+  
+  .frame-section .sidebar p,
+  .frame-section .sidebar a {
+    font-size: 0.9rem;
+    margin: 0.25rem 0;
+    color: #d1d5db;
+    text-decoration: none;
+  }
+  
+  .frame-section .sidebar a:hover {
+    color: #fbbf24;
+  }
+  
+  .frame-section .main {
+    padding: 2rem;
+    overflow: hidden;
+    overflow-y: auto;
+  }
+  
+  .frame-section .main h2 {
+    font-size: 1.2rem;
+    color: #111827;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid #fbbf24;
+    display: inline-block;
+  }
+  
+  .frame-section .main-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .frame-section ul {
+    list-style: none;
+    padding-left: 1rem;
+  }
+  
+  .frame-section ul li::before {
+    content: "•";
+    color: #fbbf24;
+    font-weight: bold;
+    display: inline-block;
+    width: 1rem;
+    margin-left: -1rem;
+  }
+  
+  .frame-section .skill-list,
+  .frame-section .project-list {
+    columns: 2;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+  }
+  
+  .frame-section .contact {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+@media (max-width: 768px) {
+    .frame-section .container {
+      grid-template-columns: 1fr;
+      height: auto;
+      overflow-y: auto;
+    }
+  
+    .frame-section .main {
+      padding: 1.5rem;
+    }
+  
+    .frame-section .skill-list,
+    .frame-section .project-list {
+      columns: 1;
+    }
+}
+
+.download-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    background-color: #3169a1;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+  
+  .download-btn:hover {
+    background-color: #225687;
+  }
+  
