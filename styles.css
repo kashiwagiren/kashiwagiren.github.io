@@ -1,29 +1,47 @@
-/* Import Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+/* ============================================================
+   CSS Custom Properties (Design Tokens)
+   ============================================================ */
+:root {
+  --color-primary: #4682b4;
+  --color-primary-dark: #315f7d;
+  --color-dark: #333;
+  --color-darker: #1f2937;
+  --color-accent: #fbbf24;
+  --color-text-muted: #9ca3af;
+  --color-text-light: #d1d5db;
+  --color-bg-resume: #f0f2f5;
+  --color-bg-gallery: #708090;
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3);
+  --radius: 8px;
+  --radius-lg: 12px;
+  --transition: 0.3s ease;
+}
 
-/* Reset default browser styles */
+/* ============================================================
+   Reset
+   ============================================================ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Prevent horizontal scroll */
 body {
   overflow-x: hidden;
 }
 
-/* Main scroll container with snap scrolling */
-.container {
+/* ============================================================
+   Scroll Container
+   ============================================================ */
+.scroll-container {
   scroll-snap-type: y mandatory;
   overflow-y: auto;
   height: 100vh;
   width: 100%;
 }
 
-/* Each section fills the viewport and snaps */
 section {
   height: 100vh;
   display: flex;
@@ -33,7 +51,9 @@ section {
   width: 100%;
 }
 
-/* Intro section container */
+/* ============================================================
+   Intro Section
+   ============================================================ */
 .intro-container {
   display: flex;
   flex-direction: column;
@@ -44,7 +64,6 @@ section {
   height: 100vh;
 }
 
-/* Main animated typewriter text */
 .type {
   color: #fff;
   font-family: "DotGothic16", sans-serif;
@@ -52,57 +71,45 @@ section {
   opacity: 0;
   transform: translateY(-50px);
   user-select: none;
-}
-
-/* Pointer on hover for type text */
-.type:hover {
   cursor: pointer;
 }
 
-/* Show animation for type text */
 .type.show {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.5s ease, transform 1.5s ease;
 }
 
-/* Secondary typewriter text */
 .type-1 {
   color: #fff;
   font-family: "VT323", monospace;
   font-size: 40px;
-  margin-right: 0;
   margin-bottom: 9.5px;
   display: none;
   user-select: none;
+  cursor: pointer;
   transition: opacity 0.5s ease;
 }
 
-/* Pointer on hover for secondary type text */
-.type-1:hover {
-  cursor: pointer;
-}
-
-/* Animated intro text */
 .text {
   color: #fff;
   font-family: "VT323", monospace;
   font-size: 1.8rem;
-  margin-right: 0;
   margin-bottom: 0.2rem;
   opacity: 0;
   transform: translateX(-20px);
   user-select: none;
 }
 
-/* Show animation for intro text */
 .text.show {
-  transform: translateX(0px);
+  transform: translateX(0);
   transition: opacity 0.5s ease, transform 1s ease;
   opacity: 1;
 }
 
-/* Scroll down button styles */
+/* ============================================================
+   Scroll Down Button
+   ============================================================ */
 .scrollDown {
   background: transparent;
   border: none;
@@ -112,24 +119,35 @@ section {
   transform: translateY(5px);
 }
 
-/* Animate scroll down icon */
 .scrollDown svg {
-  transition: transform 0.3s;
+  transition: transform var(--transition);
 }
 
-/* Animate scroll down icon on hover */
 .scrollDown:hover svg {
   transform: translateY(5px);
 }
 
-/* Show scroll down button */
 .scrollDown.showButton {
   opacity: 1;
-  transform: translateY(0px);
+  transform: translateY(0);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* Main content container with gradient background and particles */
+/* ============================================================
+   Intro Fade
+   ============================================================ */
+.intro {
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+.intro.fade-out {
+  opacity: 0;
+}
+
+/* ============================================================
+   Main / About Section
+   ============================================================ */
 .main-container {
   background: linear-gradient(135deg, #2b2b2b, #778899, #d3d3d3);
   display: flex;
@@ -141,7 +159,6 @@ section {
   overflow: hidden;
 }
 
-/* Overlay: subtle radial pattern */
 .main-container::before {
   content: "";
   position: absolute;
@@ -159,7 +176,6 @@ section {
   pointer-events: none;
 }
 
-/* Overlay: inner shadow */
 .main-container::after {
   content: "";
   position: absolute;
@@ -168,20 +184,14 @@ section {
   pointer-events: none;
 }
 
-/* Floating particle animation */
+/* ============================================================
+   Particles
+   ============================================================ */
 @keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-    opacity: 0.8;
-  }
-  50% {
-    transform: translateY(-20px);
-    opacity: 0.3;
-  }
+  0%, 100% { transform: translateY(0); opacity: 0.8; }
+  50% { transform: translateY(-20px); opacity: 0.3; }
 }
 
-/* Particle styles */
 .particle {
   position: absolute;
   width: 10px;
@@ -192,81 +202,16 @@ section {
   pointer-events: none;
 }
 
-/* Particle positions and durations */
-.main-container .particle:nth-child(1) {
-  top: 20%;
-  left: 25%;
-  animation-duration: 5s;
-}
-.main-container .particle:nth-child(2) {
-  top: 60%;
-  left: 50%;
-  animation-duration: 6s;
-}
-.main-container .particle:nth-child(3) {
-  top: 80%;
-  left: 75%;
-  animation-duration: 7s;
-}
+.main-container .particle:nth-child(1) { top: 20%; left: 25%; animation-duration: 5s; }
+.main-container .particle:nth-child(2) { top: 60%; left: 50%; animation-duration: 6s; }
+.main-container .particle:nth-child(3) { top: 80%; left: 75%; animation-duration: 7s; }
+.main-container .particle:nth-child(4) { top: 35%; left: 70%; animation-duration: 4.5s; width: 6px; height: 6px; }
+.main-container .particle:nth-child(5) { top: 70%; left: 15%; animation-duration: 5.5s; width: 8px; height: 8px; }
+.main-container .particle:nth-child(6) { top: 15%; left: 55%; animation-duration: 6.5s; width: 12px; height: 12px; }
 
-/* Frame section (hidden by default) */
-.frame-section {
-  display: none;
-  height: 100vh;
-  background: #e6e6fa;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-/* Intro fade animation */
-.intro {
-  opacity: 1;
-  transition: opacity 0.8s ease;
-}
-
-/* Fade out effect for intro */
-.intro.fade-out {
-  opacity: 0;
-}
-
-/* Frame content text */
-.frame-content {
-  font-size: 2rem;
-  color: #333;
-}
-
-/* About section container */
-.about-1 {
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  position: relative;
-  bottom: -600px;
-}
-
-/* Back button styles */
-.back-btn {
-  padding: 12px 25px;
-  font-size: 1rem;
-  font-weight: 600;
-  border: 2px solid #315f7d;
-  background: transparent;
-  color: #2b5d7f;
-  margin-top: 15px;
-  border-radius: 8px;
-  transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
-}
-
-/* Back button hover effect */
-.back-btn:hover {
-  background: #333;
-  color: #fff;
-  transform: scale(1.05);
-  cursor: pointer;
-}
-
-/* Profile container for about section */
+/* ============================================================
+   Profile Card
+   ============================================================ */
 .profile-container {
   display: flex;
   align-items: center;
@@ -280,143 +225,236 @@ section {
   z-index: 2;
 }
 
-/* Profile photo container */
 .profile-photo {
   user-select: none;
   pointer-events: none;
 }
 
-/* Profile photo image styles */
 .profile-photo img {
   width: 200px;
   height: 200px;
   object-fit: cover;
   border-radius: 50%;
   border: 4px solid #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-sm);
 }
 
-/* About text styles */
 .about-text {
   max-width: 500px;
   color: #fff;
   font-family: "Poppins", sans-serif;
+  user-select: none;
 }
 
-/* About text heading */
 .about-text h1 {
   font-size: 2.5rem;
   margin-bottom: 15px;
 }
 
-/* About text paragraph */
 .about-text p {
   font-size: 1.2rem;
   margin-bottom: 20px;
 }
 
-/* Social icons container */
+/* ============================================================
+   Social Icons
+   ============================================================ */
 .social-icons {
   margin-bottom: 20px;
   user-select: none;
 }
 
-/* Social icon links */
 .social-icons a {
   color: #fff;
   font-size: 1.5rem;
   margin-right: 15px;
-  transition: color 0.3s;
+  transition: color var(--transition);
 }
 
-/* Social icon hover effect */
 .social-icons a:hover {
-  color: #4682b4;
+  color: var(--color-primary);
 }
 
-/* Utility classes for unselectable text */
-.aaa {
-  user-select: none;
-}
-
-.aaa2 {
-  user-select: none;
-}
-
-/* CV download button */
-.cv-button {
+/* ============================================================
+   Buttons — shared base + variants
+   ============================================================ */
+.btn {
   display: inline-block;
   padding: 10px 25px;
-  background-color: #4682b4;
+  background-color: var(--color-primary);
   color: #fff;
   text-decoration: none;
-  border-radius: 8px;
-  transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease,
-    box-shadow 0.3s ease;
+  border-radius: var(--radius);
   font-weight: bold;
+  font-family: "Poppins", sans-serif;
   user-select: none;
+  transition: transform var(--transition), background-color var(--transition),
+    box-shadow var(--transition);
 }
 
-/* CV button hover effect */
-.cv-button:hover {
+.btn:hover {
   cursor: pointer;
   transform: scale(1.05);
-  background-color: #315f7d;
-  color: #fff;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  background-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-lg);
 }
 
-/* Contact button styles */
-.contact-button {
+.btn-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Back button (outline variant) */
+.back-btn {
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid var(--color-primary-dark);
+  background: transparent;
+  color: #2b5d7f;
+  margin-top: 15px;
+  border-radius: var(--radius);
+  transition: background var(--transition), transform var(--transition), color var(--transition);
+}
+
+.back-btn:hover {
+  background: var(--color-dark);
+  color: #fff;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+/* Download button */
+.download-btn {
   display: inline-block;
-  padding: 10px 25px;
-  background-color: #4682b4;
-  margin-left: 15px;
+  margin-top: 2rem;
+  padding: 0.6rem 1.4rem;
+  background-color: #3169a1;
   color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease,
-    box-shadow 0.3s ease;
   font-weight: bold;
-  user-select: none;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: background var(--transition);
+  text-align: center;
 }
 
-/* Contact button hover effect */
-.contact-button:hover {
-  cursor: pointer;
-  transform: scale(1.05);
-  background-color: #315f7d;
+.download-btn:hover {
+  background-color: #225687;
+}
+
+/* ============================================================
+   Resume / Frame Section
+   ============================================================ */
+.frame-section {
+  background: var(--color-bg-resume);
+  color: var(--color-dark);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.frame-section .resume-container {
+  background: #fff;
+  width: 90%;
+  max-width: 1200px;
+  height: 90vh;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.frame-section .sidebar {
+  background: var(--color-darker);
   color: #fff;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  justify-content: space-between;
 }
 
-/* Works button styles */
-.works-button {
+.frame-section .sidebar h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.frame-section .section-title {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  margin-top: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.frame-section .sidebar p,
+.frame-section .sidebar a {
+  font-size: 0.9rem;
+  margin: 0.25rem 0;
+  color: var(--color-text-light);
+  text-decoration: none;
+}
+
+.frame-section .sidebar a:hover {
+  color: var(--color-accent);
+}
+
+.frame-section .resume-main {
+  padding: 2rem;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.frame-section .resume-main::-webkit-scrollbar {
+  display: none;
+}
+
+.frame-section .resume-main h2 {
+  font-size: 1.2rem;
+  color: #111827;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-accent);
   display: inline-block;
-  padding: 10px 25px;
-  background-color: #4682b4;
-  margin-left: 15px;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease,
-    box-shadow 0.3s ease;
+}
+
+.frame-section .main-section {
+  margin-bottom: 1.5rem;
+}
+
+.frame-section ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.frame-section ul li::before {
+  content: "•";
+  color: var(--color-accent);
   font-weight: bold;
-  user-select: none;
+  display: inline-block;
+  width: 1rem;
+  margin-left: -1rem;
 }
 
-/* Works button hover effect */
-.works-button:hover {
-  cursor: pointer;
-  transform: scale(1.05);
-  background-color: #315f7d;
-  color: #fff;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+.frame-section .skill-list,
+.frame-section .project-list {
+  columns: 2;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
 }
 
-/* Below main container section */
+.frame-section .contact {
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   Works / Gallery Section
+   ============================================================ */
 .below-container {
-  background: #708090;
+  background: var(--color-bg-gallery);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -424,9 +462,9 @@ section {
   height: 100vh;
   position: relative;
   padding-top: 50px;
+  overflow-y: auto;
 }
 
-/* "My Works" label */
 .myworks {
   z-index: 1;
   position: absolute;
@@ -436,54 +474,142 @@ section {
   user-select: none;
 }
 
-/* Sticky navbar for below section */
+/* ============================================================
+   Gallery Navbar
+   ============================================================ */
 .below-navbar {
-  background-color: #333;
+  background-color: var(--color-dark);
   color: white;
   padding: 1rem;
   position: sticky;
+  top: 0;
   width: 100%;
   text-align: center;
   margin-top: -50px;
+  z-index: 10;
 }
 
-/* Navbar list styles */
 .below-navbar ul {
   list-style-type: none;
   padding: 0;
 }
 
-/* Navbar list items inline */
 .below-navbar li {
   display: inline;
   margin: 0 10px;
 }
 
-/* Navbar links */
 .below-navbar a {
   color: white;
   text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: color var(--transition), background-color var(--transition);
 }
 
-/* Navbar link hover effect */
 .below-navbar a:hover {
-  color: #4682b4;
+  color: var(--color-primary);
 }
 
-/* Scroll up button styles */
-.scrollUp {
-  background: transparent;
-  border: none;
+.below-navbar a.active {
+  color: #fff;
+  background-color: var(--color-primary);
+}
+
+/* ============================================================
+   Gallery Grid
+   ============================================================ */
+.works-gallery {
+  display: none;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 20px;
+  width: 100%;
+}
+
+.works-gallery.active {
+  display: flex;
+}
+
+.gallery-img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
   cursor: pointer;
-  position: sticky;
-  bottom: 20px;
-  right: 20px;
-  transition: opacity 0.5s ease;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
-/* Responsive styles for mobile */
+.gallery-img:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+.gallery-video {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+  background: #222;
+  outline: none;
+  border: none;
+}
+
+/* Hide all native video controls in gallery thumbnails */
+.gallery-video::-webkit-media-controls,
+.gallery-video::-webkit-media-controls-enclosure,
+.gallery-video::-webkit-media-controls-panel {
+  display: none !important;
+}
+
+.gallery-video:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+/* ============================================================
+   Fullscreen Image Viewer
+   ============================================================ */
+.fullscreen-view {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  flex-direction: column;
+}
+
+.fullscreen-view img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+.fullscreen-view .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  z-index: 10000;
+}
+
+/* ============================================================
+   Responsive — Mobile (≤768px)
+   ============================================================ */
 @media (max-width: 768px) {
-  .container {
+  .scroll-container {
     width: 100%;
   }
 
@@ -500,388 +626,18 @@ section {
     font-size: 1.2rem;
   }
 
-  .about {
-    font-size: 50px;
-  }
-
-  .back-btn {
-    font-size: 0.8rem;
-  }
-
   .myworks {
     font-size: 1rem;
     margin-top: 5px;
   }
 
-  .about-1 {
-    position: relative;
-    bottom: 80px;
-  }
-
-  .frame-content p {
-    font-size: 20px;
-    margin-bottom: 40px;
-  }
-}
-
-/* Frame section layout and styles */
-.frame-section {
-  background: #f0f2f5;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  display: none;
-}
-
-/* Frame section container grid */
-.frame-section .container {
-  background: #fff;
-  width: 90%;
-  max-width: 1200px;
-  height: 90vh;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-/* Sidebar styles */
-.frame-section .sidebar {
-  background: #1f2937;
-  color: #fff;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  justify-content: space-between;
-}
-
-/* Sidebar heading */
-.frame-section .sidebar h1 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-/* Sidebar section title */
-.frame-section .section-title {
-  color: #9ca3af;
-  font-size: 0.85rem;
-  margin-top: 1.5rem;
-  letter-spacing: 1px;
-}
-
-/* Sidebar text and links */
-.frame-section .sidebar p,
-.frame-section .sidebar a {
-  font-size: 0.9rem;
-  margin: 0.25rem 0;
-  color: #d1d5db;
-  text-decoration: none;
-}
-
-/* Sidebar link hover */
-.frame-section .sidebar a:hover {
-  color: #fbbf24;
-}
-
-/* Main content area in frame section */
-.frame-section .main {
-  padding: 2rem;
-  overflow: hidden;
-  overflow-y: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-/* Hide scrollbar for main content */
-.frame-section .main::-webkit-scrollbar {
-  display: none;
-}
-
-/* Main content headings */
-.frame-section .main h2 {
-  font-size: 1.2rem;
-  color: #111827;
-  margin-bottom: 0.5rem;
-  border-bottom: 2px solid #fbbf24;
-  display: inline-block;
-}
-
-/* Main section spacing */
-.frame-section .main-section {
-  margin-bottom: 1.5rem;
-}
-
-/* List styles in frame section */
-.frame-section ul {
-  list-style: none;
-  padding-left: 1rem;
-}
-
-/* Custom bullet for lists */
-.frame-section ul li::before {
-  content: "•";
-  color: #fbbf24;
-  font-weight: bold;
-  display: inline-block;
-  width: 1rem;
-  margin-left: -1rem;
-}
-
-/* Skill and project lists in columns */
-.frame-section .skill-list,
-.frame-section .project-list {
-  columns: 2;
-  font-size: 0.95rem;
-  margin-top: 0.5rem;
-}
-
-/* Contact info in frame section */
-.frame-section .contact {
-  font-size: 0.85rem;
-  line-height: 1.4;
-}
-
-/* Works gallery (hidden by default) */
-.works-gallery {
-  display: none;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 20px;
-  background: #708090;
-}
-
-/* Show works gallery when active */
-.works-gallery.active {
-  display: flex;
-}
-
-/* Gallery image styles */
-.gallery-img {
-  width: 200px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Gallery image hover effect */
-.gallery-img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
-}
-
-/* Gallery video styles */
-.gallery-video {
-  width: 200px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background: #222;
-  pointer-events: auto;
-  outline: none;
-  border: none;
-}
-
-/* Hide video controls for gallery videos */
-.gallery-video::-webkit-media-controls {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-enclosure {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-panel {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-play-button,
-.gallery-video::-webkit-media-controls-start-playback-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-overlay-play-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-timeline {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-current-time-display,
-.gallery-video::-webkit-media-controls-time-remaining-display {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-volume-slider {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-mute-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-fullscreen-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-seek-back-button,
-.gallery-video::-webkit-media-controls-seek-forward-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-rewind-button,
-.gallery-video::-webkit-media-controls-return-to-realtime-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-toggle-closed-captions-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-pip-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-settings-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-playback-rate-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-download-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-cast-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-airplay-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-picture-in-picture-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-fullscreen-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-panel {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-enclosure {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-overlay-play-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-timeline-container {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-timeline {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-current-time-display {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-time-remaining-display {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-volume-slider {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-mute-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-fullscreen-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-seek-back-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-seek-forward-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-rewind-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-toggle-closed-captions-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-pip-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-settings-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-playback-rate-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-download-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-cast-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-airplay-button {
-  display: none !important;
-}
-.gallery-video::-webkit-media-controls-picture-in-picture-button {
-  display: none !important;
-}
-
-/* Remove controls for Firefox */
-.gallery-video::-moz-media-controls {
-  display: none !important;
-}
-
-/* Remove controls for Edge/IE */
-.gallery-video::-ms-media-controls {
-  display: none !important;
-}
-
-/* Gallery video hover effect */
-.gallery-video:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
-}
-
-/* Fullscreen image view (hidden by default) */
-.fullscreen-view {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  flex-direction: column;
-}
-
-/* Fullscreen image styles */
-.fullscreen-view img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 10px;
-}
-
-/* Close button for fullscreen view */
-.fullscreen-view .close-btn {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: white;
-  cursor: pointer;
-  user-select: none;
-  z-index: 10000;
-}
-
-/* Responsive frame section for mobile */
-@media (max-width: 768px) {
-  .frame-section .container {
+  .frame-section .resume-container {
     grid-template-columns: 1fr;
     height: auto;
     overflow-y: auto;
   }
 
-  .frame-section .main {
+  .frame-section .resume-main {
     padding: 1.5rem;
   }
 
@@ -889,22 +645,4 @@ section {
   .frame-section .project-list {
     columns: 1;
   }
-}
-
-/* Download button styles */
-.download-btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
-  background-color: #3169a1;
-  color: #fff;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background 0.3s ease;
-}
-
-/* Download button hover effect */
-.download-btn:hover {
-  background-color: #225687;
 }

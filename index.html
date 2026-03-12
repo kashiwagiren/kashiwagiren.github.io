@@ -3,18 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio of Kieth Wilbur J. Chua, a Computer Engineering student at the University of Cebu. Showcasing academic projects, hobbies, and skills."
+    />
     <title>こんにちは!</title>
-    <!-- Main stylesheet -->
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/jpeg" href="assets/profile.jpg" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=DotGothic16&family=VT323&display=swap"
+      rel="stylesheet"
+    />
     <!-- Font Awesome icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <main>
-      <div class="container">
+      <div class="scroll-container">
         <!-- Intro Section -->
         <section class="intro">
           <div class="intro-container">
@@ -22,13 +34,14 @@
             <h1 class="type">こんにちは、キースです。</h1>
             <p class="text"></p>
             <!-- Scroll Down Button -->
-            <button class="scrollDown">
+            <button class="scrollDown" aria-label="Scroll to main section">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="32px"
                 viewBox="0 -960 960 960"
                 width="32px"
                 fill="#e8eaed"
+                aria-hidden="true"
               >
                 <path
                   d="M440-800v487L216-537l-56 57 320 320 320-320-56-57-224 224v-487h-80Z"
@@ -37,23 +50,27 @@
             </button>
           </div>
         </section>
+
         <!-- Main Profile/About Section -->
         <section class="main">
           <div class="main-container">
             <!-- Decorative Particles -->
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
+            <div class="particle" aria-hidden="true"></div>
+            <div class="particle" aria-hidden="true"></div>
+            <div class="particle" aria-hidden="true"></div>
+            <div class="particle" aria-hidden="true"></div>
+            <div class="particle" aria-hidden="true"></div>
+            <div class="particle" aria-hidden="true"></div>
 
             <div class="profile-container">
               <!-- Profile Photo -->
               <div class="profile-photo">
-                <img src="assets/profile.jpg" alt="Profile Photo" />
+                <img src="assets/profile.jpg" alt="Kieth Wilbur J. Chua" />
               </div>
               <!-- About Me Text -->
               <div class="about-text">
-                <h1 class="aaa2">About Me</h1>
-                <p class="aaa">
+                <h1>About Me</h1>
+                <p>
                   My name is Kieth Wilbur J. Chua, a Computer Engineering
                   Student at the University of Cebu, based in Cebu City. My
                   purpose in creating this portfolio is to showcase my academic
@@ -61,31 +78,34 @@
                 </p>
                 <!-- Social Media Icons -->
                 <div class="social-icons">
-                  <a href="https://github.com/kashiwagiren"
-                    ><i class="fab fa-github"></i
-                  ></a>
-                  <a href="https://linkedin.com/in/kieth-wilbur-chua-a40b282a9"
-                    ><i class="fab fa-linkedin-in"></i
-                  ></a>
+                  <a
+                    href="https://github.com/kashiwagiren"
+                    aria-label="GitHub"
+                  ><i class="fab fa-github"></i></a>
+                  <a
+                    href="https://linkedin.com/in/kieth-wilbur-chua-a40b282a9"
+                    aria-label="LinkedIn"
+                  ><i class="fab fa-linkedin-in"></i></a>
                   <a
                     href="https://www.instagram.com/derkilaa_?igsh=eTk5NXAwZjFrbW92"
-                    ><i class="fab fa-instagram"></i
-                  ></a>
+                    aria-label="Instagram"
+                  ><i class="fab fa-instagram"></i></a>
                 </div>
-                <!-- CV and Contact Buttons -->
-                <a class="cv-button">CV/Resume</a>
-                <a class="works-button">Stuffs</a>
-                <a class="contact-button" href="mailto:kieth4825@gmail.com"
-                  >Contact Me</a
-                >
+                <!-- Action Buttons -->
+                <div class="btn-group">
+                  <a class="btn cv-button">CV/Resume</a>
+                  <a class="btn works-button">Stuffs</a>
+                  <a class="btn contact-button" href="mailto:kieth4825@gmail.com">Contact Me</a>
+                </div>
               </div>
             </div>
           </div>
         </section>
-        <!-- Resume/Frame Section -->
+
+        <!-- Resume Section -->
         <section class="frame-section">
-          <div class="container">
-            <!-- Sidebar with Personal Info -->
+          <div class="resume-container">
+            <!-- Sidebar -->
             <div class="sidebar">
               <div>
                 <h1>CHUA, KIETH WILBUR J.</h1>
@@ -95,20 +115,11 @@
                 <p>📍 Unit 3, OPRRA, Cebu City, 6000</p>
                 <p>📞 +63 960-419-3210</p>
                 <button class="back-btn">Back</button>
-                <!-- Download CV Button -->
                 <a
                   href="assets/Chua - CV.pdf"
                   download="Chua - CV"
-                  class="btn download-btn"
-                  style="
-                    padding-right: 20px;
-                    padding-left: 15px;
-                    margin-left: 80px;
-                    margin-right: 80px;
-                    margin-top: 80px;
-                  "
-                  >Download CV</a
-                >
+                  class="download-btn"
+                >Download CV</a>
               </div>
               <div>
                 <div class="section-title">TOOLS</div>
@@ -117,8 +128,9 @@
                 <p>Raspberry Pi</p>
               </div>
             </div>
+
             <!-- Main Resume Content -->
-            <div class="main">
+            <div class="resume-main">
               <div class="main-section">
                 <h2>Education</h2>
                 <ul>
@@ -172,160 +184,72 @@
             </div>
           </div>
         </section>
+
         <!-- Works/Portfolio Section -->
         <section class="below">
           <div class="below-container">
-            <h1 class="myworks">My Works & Hobbies</h1>
-            <!-- Tabs for School/Personal Works -->
-            <nav class="below-navbar">
+            <h1 class="myworks">My Works &amp; Hobbies</h1>
+
+            <!-- Tabs -->
+            <nav class="below-navbar" aria-label="Gallery tabs">
               <ul>
                 <li><a href="#top" id="home-tab">Home</a></li>
-                <li><a href="#work1" id="school-tab">School</a></li>
+                <li><a href="#work1" id="school-tab" class="active">School</a></li>
                 <li><a href="#work2" id="personal-tab">Personal</a></li>
               </ul>
             </nav>
 
             <!-- School Gallery -->
             <div class="frame-one works-gallery active" id="work1">
-              <img
-                src="assets/00.jpg"
-                class="gallery-img"
-                alt="school work 1"
-              />
-              <img
-                src="assets/01.jpg"
-                class="gallery-img"
-                alt="school work 2"
-              />
-              <video class="gallery-video" controls width="320" height="240">
+              <img src="assets/00.jpg" class="gallery-img" alt="School work 1" loading="lazy" />
+              <img src="assets/01.jpg" class="gallery-img" alt="School work 2" loading="lazy" />
+              <video class="gallery-video" width="200" height="150" preload="none">
                 <source src="assets/00.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <video class="gallery-video" controls width="320" height="240">
+              <video class="gallery-video" width="200" height="150" preload="none">
                 <source src="assets/01.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <video class="gallery-video" controls width="320" height="240">
+              <video class="gallery-video" width="200" height="150" preload="none">
                 <source src="assets/02.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <img
-                src="assets/02.jpg"
-                class="gallery-img"
-                alt="school work 3"
-              />
-              <img
-                src="assets/03.jpg"
-                class="gallery-img"
-                alt="school work 4"
-              />
-              <img
-                src="assets/04.jpg"
-                class="gallery-img"
-                alt="school work 5"
-              />
-              <img
-                src="assets/05.jpg"
-                class="gallery-img"
-                alt="school work 6"
-              />
-              <img
-                src="assets/06.jpg"
-                class="gallery-img"
-                alt="school work 7"
-              />
-              <img
-                src="assets/07.png"
-                class="gallery-img"
-                alt="school work 8"
-              />
-              <img
-                src="assets/08.jpg"
-                class="gallery-img"
-                alt="school work 9"
-              />
-              <video class="gallery-video" controls width="320" height="240">
+              <img src="assets/02.jpg" class="gallery-img" alt="School work 3" loading="lazy" />
+              <img src="assets/03.jpg" class="gallery-img" alt="School work 4" loading="lazy" />
+              <img src="assets/04.jpg" class="gallery-img" alt="School work 5" loading="lazy" />
+              <img src="assets/05.jpg" class="gallery-img" alt="School work 6" loading="lazy" />
+              <img src="assets/06.jpg" class="gallery-img" alt="School work 7" loading="lazy" />
+              <img src="assets/07.png" class="gallery-img" alt="School work 8" loading="lazy" />
+              <img src="assets/08.jpg" class="gallery-img" alt="School work 9" loading="lazy" />
+              <video class="gallery-video" width="200" height="150" preload="none">
                 <source src="assets/09.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <!-- Add more -->
             </div>
 
             <!-- Personal Gallery -->
             <div class="frame-two works-gallery" id="work2">
-              <img
-                src="assets/personal/00.jpg"
-                class="gallery-img"
-                alt="personal work 1"
-              />
-              <img
-                src="assets/personal/01.jpg"
-                class="gallery-img"
-                alt="personal work 2"
-              />
-              <img
-                src="assets/personal/02.jpg"
-                class="gallery-img"
-                alt="personal work 3"
-              />
-              <img
-                src="assets/personal/03.jpg"
-                class="gallery-img"
-                alt="personal work 4"
-              />
-              <img
-                src="assets/personal/04.jpg"
-                class="gallery-img"
-                alt="personal work 5"
-              />
-              <img
-                src="assets/personal/05.jpg"
-                class="gallery-img"
-                alt="personal work 6"
-              />
-              <img
-                src="assets/personal/06.jpg"
-                class="gallery-img"
-                alt="personal work 7"
-              />
-              <img
-                src="assets/personal/07.jpg"
-                class="gallery-img"
-                alt="personal work 8"
-              />
-              <img
-                src="assets/personal/08.jpg"
-                class="gallery-img"
-                alt="personal work 9"
-              />
-              <img
-                src="assets/personal/09.jpg"
-                class="gallery-img"
-                alt="personal work 10"
-              />
-              <img
-                src="assets/personal/10.jpg"
-                class="gallery-img"
-                alt="personal work 11"
-              />
-              <img
-                src="assets/personal/11.jpg"
-                class="gallery-img"
-                alt="personal work 12"
-              />
-              <img
-                src="assets/personal/12.jpg"
-                class="gallery-img"
-                alt="personal work 13"
-              />
-              <!-- Add more images -->
+              <img src="assets/personal/00.jpg" class="gallery-img" alt="Personal work 1" loading="lazy" />
+              <img src="assets/personal/01.jpg" class="gallery-img" alt="Personal work 2" loading="lazy" />
+              <img src="assets/personal/02.jpg" class="gallery-img" alt="Personal work 3" loading="lazy" />
+              <img src="assets/personal/03.jpg" class="gallery-img" alt="Personal work 4" loading="lazy" />
+              <img src="assets/personal/04.jpg" class="gallery-img" alt="Personal work 5" loading="lazy" />
+              <img src="assets/personal/05.jpg" class="gallery-img" alt="Personal work 6" loading="lazy" />
+              <img src="assets/personal/06.jpg" class="gallery-img" alt="Personal work 7" loading="lazy" />
+              <img src="assets/personal/07.jpg" class="gallery-img" alt="Personal work 8" loading="lazy" />
+              <img src="assets/personal/08.jpg" class="gallery-img" alt="Personal work 9" loading="lazy" />
+              <img src="assets/personal/09.jpg" class="gallery-img" alt="Personal work 10" loading="lazy" />
+              <img src="assets/personal/10.jpg" class="gallery-img" alt="Personal work 11" loading="lazy" />
+              <img src="assets/personal/11.jpg" class="gallery-img" alt="Personal work 12" loading="lazy" />
+              <img src="assets/personal/12.jpg" class="gallery-img" alt="Personal work 13" loading="lazy" />
             </div>
           </div>
 
           <!-- Fullscreen Image Viewer -->
-          <div class="fullscreen-view">
-            <span class="close-btn">&times;</span>
-            <img src="" alt="fullscreen view" />
+          <div class="fullscreen-view" role="dialog" aria-modal="true" aria-label="Fullscreen image view">
+            <span class="close-btn" aria-label="Close">&times;</span>
+            <img src="" alt="Fullscreen view" />
           </div>
         </section>
       </div>
