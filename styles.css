@@ -606,35 +606,125 @@ section {
 }
 
 /* ============================================================
+   Responsive — Tablet (≤1024px)
+   ============================================================ */
+@media (max-width: 1024px) {
+  .profile-container {
+    padding: 30px 24px;
+    gap: 24px;
+    margin: 0 16px;
+    max-width: calc(100% - 32px);
+  }
+
+  .frame-section .resume-container {
+    width: 95%;
+  }
+
+  .gallery-img,
+  .gallery-video {
+    width: 160px;
+    height: 120px;
+  }
+}
+
+/* ============================================================
    Responsive — Mobile (≤768px)
    ============================================================ */
 @media (max-width: 768px) {
-  .scroll-container {
-    width: 100%;
+  /* -- Intro -- */
+  .intro-container {
+    padding: 0 20px;
+    text-align: center;
   }
 
   .type {
-    font-size: 30px;
-    margin-bottom: 1px;
+    font-size: clamp(1.2rem, 5.5vw, 2rem);
+    text-align: center;
+    padding: 0 12px;
+    word-break: break-word;
   }
 
   .type-1 {
-    font-size: 30px;
+    font-size: clamp(1.2rem, 5.5vw, 2rem);
+    text-align: center;
+    padding: 0 12px;
   }
 
   .text {
-    font-size: 1.2rem;
+    font-size: clamp(0.95rem, 4vw, 1.3rem);
+    text-align: center;
+    padding: 0 12px;
   }
 
-  .myworks {
-    font-size: 1rem;
-    margin-top: 5px;
+  /* -- About / Profile -- */
+  .profile-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px 16px;
+    gap: 16px;
+    margin: 0 10px;
+    max-width: calc(100% - 20px);
+  }
+
+  .profile-photo img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .about-text {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .about-text h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .about-text p {
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+  }
+
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .btn-group {
+    justify-content: center;
+  }
+
+  .btn {
+    padding: 9px 18px;
+    font-size: 0.9rem;
+  }
+
+  /* -- Resume -- */
+  .frame-section {
+    height: auto;
+    min-height: 100vh;
+    align-items: flex-start;
+    overflow-y: auto;
   }
 
   .frame-section .resume-container {
     grid-template-columns: 1fr;
+    width: 100%;
     height: auto;
-    overflow-y: auto;
+    border-radius: 0;
+  }
+
+  .frame-section .sidebar {
+    padding: 1.5rem;
+    overflow: visible;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .frame-section .sidebar h1 {
+    font-size: 1.1rem;
   }
 
   .frame-section .resume-main {
@@ -644,5 +734,87 @@ section {
   .frame-section .skill-list,
   .frame-section .project-list {
     columns: 1;
+  }
+
+  .back-btn {
+    width: 100%;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .download-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+    display: block;
+  }
+
+  /* -- Gallery -- */
+  .below-container {
+    padding-top: 40px;
+  }
+
+  .myworks {
+    font-size: 0.9rem;
+    margin-top: 4px;
+  }
+
+  .works-gallery {
+    gap: 10px;
+    padding: 14px 10px;
+  }
+
+  /* 2 thumbnails per row on phones */
+  .gallery-img,
+  .gallery-video {
+    width: calc(50% - 6px);
+    height: 120px;
+  }
+}
+
+/* ============================================================
+   Responsive — Small phones portrait (≤480px)
+   ============================================================ */
+@media (max-width: 480px) {
+  .type,
+  .type-1 {
+    font-size: clamp(1rem, 5vw, 1.4rem);
+  }
+
+  .text {
+    font-size: clamp(0.85rem, 3.8vw, 1.1rem);
+  }
+
+  .profile-container {
+    padding: 16px 12px;
+  }
+
+  .profile-photo img {
+    width: 110px;
+    height: 110px;
+  }
+
+  .about-text h1 {
+    font-size: 1.4rem;
+  }
+
+  .about-text p {
+    font-size: 0.88rem;
+  }
+
+  .btn {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+
+  .frame-section .sidebar h1 {
+    font-size: 1rem;
+  }
+
+  /* Single column on very small screens */
+  .gallery-img,
+  .gallery-video {
+    width: 100%;
+    max-width: 340px;
+    height: 190px;
   }
 }
