@@ -841,9 +841,15 @@ section {
 }
 
 .below-navbar {
+  flex: 1;
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+}
+
+.gallery-header-spacer {
+  width: 34px;
+  flex-shrink: 0;
 }
 
 .home-tab-link {
