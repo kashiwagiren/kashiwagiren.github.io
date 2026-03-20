@@ -25,9 +25,12 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Scroll progress bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
     <main>
       <div class="scroll-container">
-        <!-- Intro Section — untouched -->
+        <!-- Intro Section -->
         <section class="intro">
           <div class="intro-container">
             <h2 class="type-1">Hello, I'm Kieth.</h2>
@@ -54,7 +57,7 @@
         <!-- About Section -->
         <section class="main">
           <div class="main-container">
-            <div class="profile-container">
+            <div class="profile-container reveal">
               <!-- Profile Photo -->
               <div class="profile-photo">
                 <img src="assets/profile.jpg" alt="Kieth Wilbur J. Chua" />
@@ -202,8 +205,8 @@
 
             <!-- School Gallery -->
             <div class="frame-one works-gallery active" id="work1">
-              <img src="assets/00.jpg" class="gallery-img" alt="School work 1" loading="lazy" />
-              <img src="assets/01.jpg" class="gallery-img" alt="School work 2" loading="lazy" />
+              <div class="gallery-item"><img src="assets/00.jpg" class="gallery-img" alt="School work 1" loading="lazy" /></div>
+              <div class="gallery-item"><img src="assets/01.jpg" class="gallery-img" alt="School work 2" loading="lazy" /></div>
               <div class="video-wrapper">
                 <video class="gallery-video" preload="none">
                   <source src="assets/00.mp4" type="video/mp4" />
@@ -222,13 +225,13 @@
                 </video>
                 <div class="play-overlay" aria-hidden="true"><i class="fas fa-play"></i></div>
               </div>
-              <img src="assets/02.jpg" class="gallery-img" alt="School work 3" loading="lazy" />
-              <img src="assets/03.jpg" class="gallery-img" alt="School work 4" loading="lazy" />
-              <img src="assets/04.jpg" class="gallery-img" alt="School work 5" loading="lazy" />
-              <img src="assets/05.jpg" class="gallery-img" alt="School work 6" loading="lazy" />
-              <img src="assets/06.jpg" class="gallery-img" alt="School work 7" loading="lazy" />
-              <img src="assets/07.png" class="gallery-img" alt="School work 8" loading="lazy" />
-              <img src="assets/08.jpg" class="gallery-img" alt="School work 9" loading="lazy" />
+              <div class="gallery-item"><img src="assets/02.jpg" class="gallery-img" alt="School work 3" loading="lazy" /></div>
+              <div class="gallery-item"><img src="assets/03.jpg" class="gallery-img" alt="School work 4" loading="lazy" /></div>
+              <div class="gallery-item"><img src="assets/04.jpg" class="gallery-img" alt="School work 5" loading="lazy" /></div>
+              <div class="gallery-item"><img src="assets/05.jpg" class="gallery-img" alt="School work 6" loading="lazy" /></div>
+              <div class="gallery-item"><img src="assets/06.jpg" class="gallery-img" alt="School work 7" loading="lazy" /></div>
+              <div class="gallery-item"><img src="assets/07.png" class="gallery-img" alt="School work 8" loading="lazy" /></div>
+              <div class="gallery-item"><img src="assets/08.jpg" class="gallery-img" alt="School work 9" loading="lazy" /></div>
               <div class="video-wrapper">
                 <video class="gallery-video" preload="none">
                   <source src="assets/09.mp4" type="video/mp4" />
@@ -239,26 +242,29 @@
 
             <!-- Personal Gallery -->
             <div class="frame-two works-gallery" id="work2">
-              <img src="assets/personal/00.jpg" class="gallery-img" alt="Personal 1" loading="lazy" />
-              <img src="assets/personal/01.jpg" class="gallery-img" alt="Personal 2" loading="lazy" />
-              <img src="assets/personal/02.jpg" class="gallery-img" alt="Personal 3" loading="lazy" />
-              <img src="assets/personal/03.jpg" class="gallery-img" alt="Personal 4" loading="lazy" />
-              <img src="assets/personal/04.jpg" class="gallery-img" alt="Personal 5" loading="lazy" />
-              <img src="assets/personal/05.jpg" class="gallery-img" alt="Personal 6" loading="lazy" />
-              <img src="assets/personal/06.jpg" class="gallery-img" alt="Personal 7" loading="lazy" />
-              <img src="assets/personal/07.jpg" class="gallery-img" alt="Personal 8" loading="lazy" />
-              <img src="assets/personal/08.jpg" class="gallery-img" alt="Personal 9" loading="lazy" />
-              <img src="assets/personal/09.jpg" class="gallery-img" alt="Personal 10" loading="lazy" />
-              <img src="assets/personal/10.jpg" class="gallery-img" alt="Personal 11" loading="lazy" />
-              <img src="assets/personal/11.jpg" class="gallery-img" alt="Personal 12" loading="lazy" />
-              <img src="assets/personal/12.jpg" class="gallery-img" alt="Personal 13" loading="lazy" />
+              <div class="gallery-item"><img src="assets/personal/00.jpg" class="gallery-img" alt="Personal 1" loading="lazy" /></div>
+              <div class="gallery-item"><img src="assets/personal/01.jpg" class="gallery-img" alt="Personal 2" loading="lazy" /></div>
+              <div class="gallery-item"><img src="assets/personal/02.jpg" class="gallery-img" alt="Personal 3" loading="lazy" /></div>
+              <div class="gallery-item"><img src="assets/personal/03.jpg" class="gallery-img" alt="Personal 4" loading="lazy" /></div>
+              <div class="gallery-item"><img src="assets/personal/04.jpg" class="gallery-img" alt="Personal 5" loading="lazy" /></div>
+              <div class="gallery-item"><img src="assets/personal/05.jpg" class="gallery-img" alt="Personal 6" loading="lazy" /></div>
+              <div class="gallery-item"><img src="assets/personal/06.jpg" class="gallery-img" alt="Personal 7" loading="lazy" /></div>
+              <div class="gallery-item"><img src="assets/personal/07.jpg" class="gallery-img" alt="Personal 8" loading="lazy" /></div>
+              <div class="gallery-item"><img src="assets/personal/08.jpg" class="gallery-img" alt="Personal 9" loading="lazy" /></div>
+              <div class="gallery-item"><img src="assets/personal/09.jpg" class="gallery-img" alt="Personal 10" loading="lazy" /></div>
+              <div class="gallery-item"><img src="assets/personal/10.jpg" class="gallery-img" alt="Personal 11" loading="lazy" /></div>
+              <div class="gallery-item"><img src="assets/personal/11.jpg" class="gallery-img" alt="Personal 12" loading="lazy" /></div>
+              <div class="gallery-item"><img src="assets/personal/12.jpg" class="gallery-img" alt="Personal 13" loading="lazy" /></div>
             </div>
           </div>
 
           <!-- Fullscreen Image Viewer -->
           <div class="fullscreen-view" role="dialog" aria-modal="true" aria-label="Fullscreen image view">
             <span class="close-btn" aria-label="Close">&times;</span>
+            <button class="lightbox-prev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
             <img src="" alt="Fullscreen view" />
+            <button class="lightbox-next" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+            <span class="lightbox-counter"></span>
           </div>
         </section>
       </div>
