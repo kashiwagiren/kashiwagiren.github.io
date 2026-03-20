@@ -35,6 +35,8 @@ function typeText() {
     intro2.textContent += textContent.charAt(typeIndex);
     typeIndex++;
     setTimeout(typeText, 100);
+  } else {
+    intro2.classList.add("typing-done");
   }
 }
 
@@ -139,6 +141,68 @@ if ("IntersectionObserver" in window && !sessionStorage.getItem("introHidden")) 
 }
 
 // ============================================================
+// Scroll Progress Bar
+// ============================================================
+const progressBar = document.getElementById("progressBar");
+const scrollContainer = document.querySelector(".scroll-container");
+
+if (scrollContainer && progressBar) {
+  scrollContainer.addEventListener("scroll", () => {
+    const scrollTop = scrollContainer.scrollTop;
+    const scrollHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+    const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    progressBar.style.width = progress + "%";
+  });
+}
+
+// ============================================================
+// Scroll Reveal (IntersectionObserver)
+// ============================================================
+function initScrollReveal() {
+  const revealEls = document.querySelectorAll(".reveal");
+  if (!revealEls.length) return;
+
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  revealEls.forEach((el) => revealObserver.observe(el));
+}
+
+// Resume section reveal with stagger
+function initResumeReveal() {
+  const sections = document.querySelectorAll(".frame-section .main-section");
+  sections.forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.08}s`;
+  });
+
+  const resumeObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          resumeObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -30px 0px" }
+  );
+
+  sections.forEach((el) => resumeObserver.observe(el));
+}
+
+initScrollReveal();
+initResumeReveal();
+
+// ============================================================
 // CV Button — show resume, hide everything else
 // ============================================================
 document.querySelector(".cv-button").addEventListener("click", function () {
@@ -146,6 +210,8 @@ document.querySelector(".cv-button").addEventListener("click", function () {
   document.querySelector(".frame-section").style.display = "flex";
   const belowSection = document.querySelector(".below");
   if (belowSection) belowSection.style.display = "none";
+  // Re-trigger resume section reveal
+  initResumeReveal();
 });
 
 // ============================================================
@@ -208,25 +274,103 @@ document.getElementById("personal-tab").addEventListener("click", (e) => {
 });
 
 // ============================================================
-// Fullscreen Image Viewer
+// Fullscreen Image Viewer — with prev/next navigation
 // ============================================================
 const fullscreenView = document.querySelector(".fullscreen-view");
 const fullscreenImg = fullscreenView.querySelector("img");
+const lightboxPrev = document.querySelector(".lightbox-prev");
+const lightboxNext = document.querySelector(".lightbox-next");
+const lightboxCounter = document.querySelector(".lightbox-counter");
 
-document.querySelectorAll(".gallery-img").forEach((img) => {
-  img.addEventListener("click", () => {
-    fullscreenImg.src = img.src;
-    fullscreenView.style.display = "flex";
+let galleryImages = [];
+let currentImageIndex = 0;
+
+function buildGalleryList() {
+  const activeGallery = document.querySelector(".works-gallery.active");
+  if (!activeGallery) return;
+  galleryImages = Array.from(activeGallery.querySelectorAll(".gallery-img"));
+}
+
+function openLightbox(index) {
+  buildGalleryList();
+  if (!galleryImages.length) return;
+  currentImageIndex = Math.max(0, Math.min(index, galleryImages.length - 1));
+  showLightboxImage(currentImageIndex);
+  fullscreenView.style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+
+function showLightboxImage(index) {
+  fullscreenImg.style.opacity = "0";
+  setTimeout(() => {
+    fullscreenImg.src = galleryImages[index].src;
+    fullscreenImg.alt = galleryImages[index].alt;
+    fullscreenImg.style.opacity = "1";
+  }, 150);
+  lightboxCounter.textContent = `${index + 1} / ${galleryImages.length}`;
+}
+
+function closeLightbox() {
+  fullscreenView.style.display = "none";
+  document.body.style.overflow = "";
+}
+
+function prevImage() {
+  if (!galleryImages.length) return;
+  currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+  showLightboxImage(currentImageIndex);
+}
+
+function nextImage() {
+  if (!galleryImages.length) return;
+  currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+  showLightboxImage(currentImageIndex);
+}
+
+// Attach click listeners to gallery images
+document.querySelectorAll(".gallery-item").forEach((item) => {
+  item.addEventListener("click", () => {
+    buildGalleryList();
+    const img = item.querySelector(".gallery-img");
+    const idx = galleryImages.indexOf(img);
+    openLightbox(idx >= 0 ? idx : 0);
   });
 });
 
-document.querySelector(".close-btn").addEventListener("click", () => {
-  fullscreenView.style.display = "none";
-});
+lightboxPrev?.addEventListener("click", (e) => { e.stopPropagation(); prevImage(); });
+lightboxNext?.addEventListener("click", (e) => { e.stopPropagation(); nextImage(); });
+
+document.querySelector(".close-btn").addEventListener("click", closeLightbox);
 
 fullscreenView.addEventListener("click", (e) => {
-  if (e.target === fullscreenView) fullscreenView.style.display = "none";
+  if (e.target === fullscreenView) closeLightbox();
 });
+
+// Keyboard navigation
+document.addEventListener("keydown", (e) => {
+  if (fullscreenView.style.display !== "flex") return;
+  if (e.key === "Escape")       closeLightbox();
+  if (e.key === "ArrowLeft")    prevImage();
+  if (e.key === "ArrowRight")   nextImage();
+});
+
+// Touch swipe support
+let touchStartX = 0;
+let touchStartY = 0;
+
+fullscreenView.addEventListener("touchstart", (e) => {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+}, { passive: true });
+
+fullscreenView.addEventListener("touchend", (e) => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
+  if (Math.abs(dx) > 50 && dy < 80) {
+    if (dx < 0) nextImage();
+    else prevImage();
+  }
+}, { passive: true });
 
 // ============================================================
 // Fullscreen Video Viewer
@@ -284,17 +428,23 @@ fullscreenVideoView.appendChild(fullscreenVideo);
 fullscreenVideoView.appendChild(closeVideoBtn);
 document.body.appendChild(fullscreenVideoView);
 
-closeVideoBtn.addEventListener("click", () => {
+function closeVideoLightbox() {
   fullscreenVideo.pause();
   fullscreenVideoView.style.display = "none";
   fullscreenVideo.src = "";
-});
+  document.body.style.overflow = "";
+}
+
+closeVideoBtn.addEventListener("click", closeVideoLightbox);
 
 fullscreenVideoView.addEventListener("click", (e) => {
-  if (e.target === fullscreenVideoView) {
-    fullscreenVideo.pause();
-    fullscreenVideoView.style.display = "none";
-    fullscreenVideo.src = "";
+  if (e.target === fullscreenVideoView) closeVideoLightbox();
+});
+
+// Keyboard close for video
+document.addEventListener("keydown", (e) => {
+  if (fullscreenVideoView.style.display === "flex" && e.key === "Escape") {
+    closeVideoLightbox();
   }
 });
 
@@ -307,6 +457,7 @@ document.querySelectorAll(".video-wrapper").forEach((wrapper) => {
     fullscreenVideo.currentTime = 0;
     fullscreenVideo.muted = false;
     fullscreenVideoView.style.display = "flex";
+    document.body.style.overflow = "hidden";
     fullscreenVideo.play();
   });
 });
