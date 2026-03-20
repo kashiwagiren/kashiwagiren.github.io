@@ -219,9 +219,13 @@ document.querySelector(".cv-button").addEventListener("click", function () {
 // ============================================================
 document.querySelector(".back-btn").addEventListener("click", function () {
   document.querySelector(".frame-section").style.display = "none";
-  document.querySelector(".main").style.display = "flex";
   const belowSection = document.querySelector(".below");
   if (belowSection) belowSection.style.display = "none";
+  const mainSection = document.querySelector(".main");
+  if (mainSection) {
+    mainSection.style.display = "flex";
+    setTimeout(() => mainSection.scrollIntoView({ behavior: "smooth" }), 50);
+  }
 });
 
 // ============================================================
@@ -239,15 +243,18 @@ document.querySelector(".works-button").addEventListener("click", function () {
 // ============================================================
 document.getElementById("home-tab").addEventListener("click", function (e) {
   e.preventDefault();
-  const mainSection = document.querySelector(".main");
   const belowSection = document.querySelector(".below");
-  if (mainSection) mainSection.style.display = "flex";
   if (belowSection) belowSection.style.display = "none";
+  const mainSection = document.querySelector(".main");
+  if (mainSection) {
+    mainSection.style.display = "flex";
+    setTimeout(() => mainSection.scrollIntoView({ behavior: "smooth" }), 50);
+  }
   setActiveTab(null);
 });
 
 // ============================================================
-// Gallery Tab Switching
+// Gallery Tab Switching + Animation
 // ============================================================
 function setActiveTab(activeId) {
   document.querySelectorAll(".below-navbar ul a").forEach((a) => {
@@ -259,19 +266,93 @@ function setActiveTab(activeId) {
   }
 }
 
+function switchGallery(show, hide, tabId) {
+  if (show.classList.contains("active")) return;
+
+  // Fade out current
+  hide.style.opacity = "0";
+  hide.style.transform = "scale(0.97)";
+  hide.style.transition = "opacity 0.15s ease, transform 0.15s ease";
+
+  setTimeout(() => {
+    hide.classList.remove("active");
+    hide.style.opacity = "";
+    hide.style.transform = "";
+    hide.style.transition = "";
+
+    show.classList.add("active");
+    show.scrollTop = 0;
+
+    // Stagger entrance of each item
+    const items = show.querySelectorAll(".gallery-item, .video-wrapper");
+    items.forEach((item, i) => {
+      item.style.opacity = "0";
+      item.style.transform = "scale(0.88) translateY(10px)";
+      item.style.transition = `opacity 0.3s ease ${i * 0.04}s, transform 0.3s cubic-bezier(0.16,1,0.3,1) ${i * 0.04}s`;
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        item.style.opacity = "1";
+        item.style.transform = "scale(1) translateY(0)";
+      }));
+    });
+
+    // Clean up inline transitions after animation
+    const duration = items.length * 40 + 350;
+    setTimeout(() => {
+      items.forEach((item) => {
+        item.style.opacity = "";
+        item.style.transform = "";
+        item.style.transition = "";
+      });
+    }, duration);
+
+    setActiveTab(tabId);
+    // Rebuild lightbox list for the new active gallery
+    buildGalleryList();
+  }, 150);
+}
+
 document.getElementById("school-tab").addEventListener("click", (e) => {
   e.preventDefault();
-  document.querySelector(".frame-one").classList.add("active");
-  document.querySelector(".frame-two").classList.remove("active");
-  setActiveTab("school-tab");
+  switchGallery(
+    document.querySelector(".frame-one"),
+    document.querySelector(".frame-two"),
+    "school-tab"
+  );
 });
 
 document.getElementById("personal-tab").addEventListener("click", (e) => {
   e.preventDefault();
-  document.querySelector(".frame-two").classList.add("active");
-  document.querySelector(".frame-one").classList.remove("active");
-  setActiveTab("personal-tab");
+  switchGallery(
+    document.querySelector(".frame-two"),
+    document.querySelector(".frame-one"),
+    "personal-tab"
+  );
 });
+
+// ============================================================
+// Gallery Enhancements — zoom icons + count badges
+// ============================================================
+function initGalleryEnhancements() {
+  // Inject zoom icon into each gallery-item
+  document.querySelectorAll(".gallery-item").forEach((item) => {
+    if (!item.querySelector(".zoom-icon")) {
+      const zoom = document.createElement("span");
+      zoom.className = "zoom-icon";
+      zoom.innerHTML = '<i class="fas fa-expand-alt"></i>';
+      item.appendChild(zoom);
+    }
+  });
+
+  // Count badges
+  const schoolCount = document.querySelectorAll(".frame-one .gallery-item, .frame-one .video-wrapper").length;
+  const personalCount = document.querySelectorAll(".frame-two .gallery-item, .frame-two .video-wrapper").length;
+  const sc = document.getElementById("school-count");
+  const pc = document.getElementById("personal-count");
+  if (sc) sc.textContent = schoolCount;
+  if (pc) pc.textContent = personalCount;
+}
+
+initGalleryEnhancements();
 
 // ============================================================
 // Fullscreen Image Viewer — with prev/next navigation
