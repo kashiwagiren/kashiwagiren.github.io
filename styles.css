@@ -1521,3 +1521,293 @@ section {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 }
+
+/* ============================================================
+   GALLERY BENTO GRID REDESIGN
+   ============================================================ */
+
+/* Bento grid — 4 columns, fixed row height, dense packing */
+.works-gallery {
+  display: none;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 190px;
+  grid-auto-flow: row dense;
+  gap: 10px;
+  padding: 16px 20px;
+  overflow-y: auto;
+  align-content: start;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface-2) transparent;
+}
+
+.works-gallery::-webkit-scrollbar { width: 4px; }
+.works-gallery::-webkit-scrollbar-thumb {
+  background: var(--surface-2);
+  border-radius: 4px;
+}
+
+.works-gallery.active {
+  display: grid;
+}
+
+/* ── Featured first image: 2×2 ── */
+.works-gallery > .gallery-item:first-child {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* ── Videos span 2 columns (landscape) ── */
+.works-gallery > .video-wrapper {
+  grid-column: span 2;
+}
+
+/* ── Gallery item ── */
+.gallery-item {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--surface-2);
+  aspect-ratio: unset;
+  height: 100%;
+}
+
+.gallery-item .gallery-img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: unset;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Dark gradient overlay on hover */
+.gallery-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6, 6, 18, 0.72) 0%, rgba(6, 6, 18, 0.1) 55%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gallery-item:hover::after {
+  opacity: 1;
+}
+
+.gallery-item:hover .gallery-img {
+  transform: scale(1.06);
+}
+
+/* "Photo" type label */
+.gallery-item::before {
+  content: "Photo";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.66rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 3;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+
+.gallery-item:hover::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Zoom icon (injected via JS) */
+.zoom-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.72rem;
+  opacity: 0;
+  transform: scale(0.7) translateY(4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 3;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.gallery-item:hover .zoom-icon {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* ── Video wrapper ── */
+.video-wrapper {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  height: 100%;
+  aspect-ratio: unset;
+  background: linear-gradient(135deg, #0f0f1a 0%, #1a1040 60%, #0d0d18 100%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* "Video" type label (always visible) */
+.video-wrapper::before {
+  content: "Video";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(99, 102, 241, 0.75);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.66rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  z-index: 3;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+
+.video-wrapper:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.22);
+}
+
+/* Play button circle */
+.play-overlay {
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+
+.play-overlay i {
+  font-size: 1rem !important;
+  background: rgba(99, 102, 241, 0.85);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 8px rgba(99, 102, 241, 0.15), 0 4px 20px rgba(0, 0, 0, 0.5);
+  padding-left: 4px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.video-wrapper:hover .play-overlay {
+  background: rgba(0, 0, 0, 0.4) !important;
+}
+
+.video-wrapper:hover .play-overlay i {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 14px rgba(99, 102, 241, 0.1), 0 4px 28px rgba(0, 0, 0, 0.6);
+}
+
+/* ── Tab count badges ── */
+.tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 17px;
+  padding: 0 5px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-full);
+  font-size: 0.62rem;
+  font-weight: 700;
+  margin-left: 4px;
+  color: var(--text-muted);
+  vertical-align: middle;
+  transition: all var(--transition);
+}
+
+.below-navbar a.active .tab-count {
+  background: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ── Tab switch stagger animation ── */
+.works-gallery.switching .gallery-item,
+.works-gallery.switching .video-wrapper {
+  animation: itemFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes itemFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ── Responsive: tablet 3-col ── */
+@media (max-width: 960px) {
+  .works-gallery {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 165px;
+  }
+}
+
+/* ── Responsive: mobile 2-col ── */
+@media (max-width: 680px) {
+  .works-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 135px;
+    gap: 7px;
+    padding: 12px 14px;
+  }
+
+  /* First item: tall (1 col × 2 rows) */
+  .works-gallery > .gallery-item:first-child {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+
+  /* Videos still full-width */
+  .works-gallery > .video-wrapper {
+    grid-column: span 2;
+  }
+
+  /* Labels always visible on touch screens */
+  .gallery-item::before,
+  .gallery-item .zoom-icon {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+  }
+}
+
+/* ── Responsive: small phones ── */
+@media (max-width: 400px) {
+  .works-gallery {
+    grid-auto-rows: 115px;
+    gap: 5px;
+    padding: 8px 10px;
+  }
+}
