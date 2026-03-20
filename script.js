@@ -6,23 +6,19 @@ window.onload = () => {
   const intro2 = document.querySelector(".text");
   const button = document.querySelector(".scrollDown");
 
-  // Disable pointer events during load animations
   intro1.style.pointerEvents = "none";
   button.style.pointerEvents = "none";
 
-  // Reveal typing text immediately
   setTimeout(() => {
     intro2.classList.add("show");
     typeText();
   }, 100);
 
-  // Reveal Japanese greeting after 300ms
   setTimeout(() => {
     intro1.classList.add("show");
     intro1.style.pointerEvents = "auto";
   }, 300);
 
-  // Reveal scroll button after 500ms
   setTimeout(() => {
     button.classList.add("showButton");
     button.style.pointerEvents = "auto";
@@ -46,14 +42,12 @@ function typeText() {
 // DOMContentLoaded — all setup that needs the DOM ready
 // ============================================================
 document.addEventListener("DOMContentLoaded", () => {
-  // --- Scroll down button ---
   const scrollButton = document.querySelector(".scrollDown");
   const mainSection = document.querySelector(".main");
   scrollButton.addEventListener("click", () => {
     mainSection.scrollIntoView({ behavior: "smooth" });
   });
 
-  // --- Hide below section on load ---
   const belowSection = document.querySelector(".below");
   if (belowSection) belowSection.style.display = "none";
 });
@@ -64,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
 const h1Element = document.querySelector(".type");
 const h2Element = document.querySelector(".type-1");
 
-// Initialize h2 off-screen
 h2Element.style.transform = "translateX(-100%)";
 h2Element.style.opacity = "0";
 h2Element.style.display = "none";
@@ -121,7 +114,6 @@ function activateMainView() {
   }, 800);
 }
 
-// Restore hidden intro state across refreshes
 if (sessionStorage.getItem("introHidden") === "true") {
   if (intro) intro.style.display = "none";
   if (pageTitle) pageTitle.textContent = "My Portfolio";
@@ -130,7 +122,6 @@ if (sessionStorage.getItem("introHidden") === "true") {
 
 scrollBtn?.addEventListener("click", activateMainView);
 
-// Auto-activate when main section scrolls into view
 if ("IntersectionObserver" in window && !sessionStorage.getItem("introHidden")) {
   const mainSection = document.querySelector(".main");
   const observer = new IntersectionObserver(
@@ -173,7 +164,7 @@ document.querySelector(".back-btn").addEventListener("click", function () {
 document.querySelector(".works-button").addEventListener("click", function () {
   const belowSection = document.querySelector(".below");
   const mainSection = document.querySelector(".main");
-  if (belowSection) belowSection.style.display = "block";
+  if (belowSection) belowSection.style.display = "flex";
   if (mainSection) mainSection.style.display = "none";
 });
 
@@ -193,7 +184,7 @@ document.getElementById("home-tab").addEventListener("click", function (e) {
 // Gallery Tab Switching
 // ============================================================
 function setActiveTab(activeId) {
-  document.querySelectorAll(".below-navbar a").forEach((a) => {
+  document.querySelectorAll(".below-navbar ul a").forEach((a) => {
     a.classList.remove("active");
   });
   if (activeId) {
@@ -233,13 +224,12 @@ document.querySelector(".close-btn").addEventListener("click", () => {
   fullscreenView.style.display = "none";
 });
 
-// Close fullscreen image on backdrop click
 fullscreenView.addEventListener("click", (e) => {
   if (e.target === fullscreenView) fullscreenView.style.display = "none";
 });
 
 // ============================================================
-// Fullscreen Video Viewer (built once, reused for all videos)
+// Fullscreen Video Viewer
 // ============================================================
 const fullscreenVideoView = document.createElement("div");
 fullscreenVideoView.className = "fullscreen-video-view";
@@ -248,9 +238,10 @@ fullscreenVideoView.style.cssText = `
   position: fixed;
   z-index: 9999;
   top: 0; left: 0; width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.92);
   justify-content: center;
   align-items: center;
+  backdrop-filter: blur(6px);
 `;
 
 const fullscreenVideo = document.createElement("video");
@@ -259,10 +250,10 @@ fullscreenVideo.style.cssText = `
   width: 1280px;
   height: 720px;
   background: #000;
-  box-shadow: 0 0 24px #000a;
-  border-radius: 8px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.8);
+  border-radius: 12px;
   max-width: 95vw;
-  max-height: 90vh;
+  max-height: 88vh;
   display: block;
 `;
 
@@ -271,14 +262,22 @@ closeVideoBtn.textContent = "×";
 closeVideoBtn.setAttribute("aria-label", "Close video");
 closeVideoBtn.style.cssText = `
   position: absolute;
-  top: 32px;
-  right: 48px;
-  font-size: 2.5rem;
-  color: #fff;
-  background: transparent;
+  top: 20px;
+  right: 28px;
+  font-size: 2rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.08);
   border: none;
   cursor: pointer;
   z-index: 10001;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 `;
 
 fullscreenVideoView.appendChild(fullscreenVideo);
@@ -291,7 +290,6 @@ closeVideoBtn.addEventListener("click", () => {
   fullscreenVideo.src = "";
 });
 
-// Close on backdrop click
 fullscreenVideoView.addEventListener("click", (e) => {
   if (e.target === fullscreenVideoView) {
     fullscreenVideo.pause();
@@ -300,9 +298,11 @@ fullscreenVideoView.addEventListener("click", (e) => {
   }
 });
 
-document.querySelectorAll(".gallery-video").forEach((galleryVideo) => {
-  galleryVideo.addEventListener("click", () => {
-    const src = galleryVideo.src || galleryVideo.querySelector("source")?.src || "";
+// Click on video wrapper opens fullscreen
+document.querySelectorAll(".video-wrapper").forEach((wrapper) => {
+  wrapper.addEventListener("click", () => {
+    const vid = wrapper.querySelector(".gallery-video");
+    const src = vid.src || vid.querySelector("source")?.src || "";
     fullscreenVideo.src = src;
     fullscreenVideo.currentTime = 0;
     fullscreenVideo.muted = false;

@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=DotGothic16&family=VT323&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=DotGothic16&family=VT323&display=swap"
       rel="stylesheet"
     />
     <!-- Font Awesome icons -->
@@ -27,7 +27,7 @@
   <body>
     <main>
       <div class="scroll-container">
-        <!-- Intro Section -->
+        <!-- Intro Section — untouched -->
         <section class="intro">
           <div class="intro-container">
             <h2 class="type-1">Hello, I'm Kieth.</h2>
@@ -51,17 +51,9 @@
           </div>
         </section>
 
-        <!-- Main Profile/About Section -->
+        <!-- About Section -->
         <section class="main">
           <div class="main-container">
-            <!-- Decorative Particles -->
-            <div class="particle" aria-hidden="true"></div>
-            <div class="particle" aria-hidden="true"></div>
-            <div class="particle" aria-hidden="true"></div>
-            <div class="particle" aria-hidden="true"></div>
-            <div class="particle" aria-hidden="true"></div>
-            <div class="particle" aria-hidden="true"></div>
-
             <div class="profile-container">
               <!-- Profile Photo -->
               <div class="profile-photo">
@@ -69,6 +61,7 @@
               </div>
               <!-- About Me Text -->
               <div class="about-text">
+                <span class="about-label">Computer Engineering Student</span>
                 <h1>About Me</h1>
                 <p>
                   My name is Kieth Wilbur J. Chua, a Computer Engineering
@@ -78,24 +71,25 @@
                 </p>
                 <!-- Social Media Icons -->
                 <div class="social-icons">
-                  <a
-                    href="https://github.com/kashiwagiren"
-                    aria-label="GitHub"
-                  ><i class="fab fa-github"></i></a>
+                  <a href="https://github.com/kashiwagiren" aria-label="GitHub"
+                    ><i class="fab fa-github"></i
+                  ></a>
                   <a
                     href="https://linkedin.com/in/kieth-wilbur-chua-a40b282a9"
                     aria-label="LinkedIn"
-                  ><i class="fab fa-linkedin-in"></i></a>
+                    ><i class="fab fa-linkedin-in"></i
+                  ></a>
                   <a
                     href="https://www.instagram.com/derkilaa_?igsh=eTk5NXAwZjFrbW92"
                     aria-label="Instagram"
-                  ><i class="fab fa-instagram"></i></a>
+                    ><i class="fab fa-instagram"></i
+                  ></a>
                 </div>
                 <!-- Action Buttons -->
                 <div class="btn-group">
-                  <a class="btn cv-button">CV/Resume</a>
-                  <a class="btn works-button">Stuffs</a>
-                  <a class="btn contact-button" href="mailto:kieth4825@gmail.com">Contact Me</a>
+                  <a class="btn cv-button">CV / Resume</a>
+                  <a class="btn btn-outline works-button">Stuffs</a>
+                  <a class="btn btn-ghost contact-button" href="mailto:kieth4825@gmail.com">Contact Me</a>
                 </div>
               </div>
             </div>
@@ -106,115 +100,128 @@
         <section class="frame-section">
           <div class="resume-container">
             <!-- Sidebar -->
-            <div class="sidebar">
-              <div>
+            <aside class="sidebar">
+              <div class="sidebar-top">
                 <h1>CHUA, KIETH WILBUR J.</h1>
                 <div class="section-title">COMPUTER ENGINEERING</div>
                 <div class="section-title">CONTACT</div>
-                <p>📧 kieth4825@gmail.com</p>
-                <p>📍 Unit 3, OPRRA, Cebu City, 6000</p>
-                <p>📞 +63 960-419-3210</p>
-                <button class="back-btn">Back</button>
-                <a
-                  href="assets/Chua - CV.pdf"
-                  download="Chua - CV"
-                  class="download-btn"
-                >Download CV</a>
+                <p><i class="fas fa-envelope"></i> kieth4825@gmail.com</p>
+                <p><i class="fas fa-location-dot"></i> Unit 3, OPRRA, Cebu City, 6000</p>
+                <p><i class="fas fa-phone"></i> +63 960-419-3210</p>
               </div>
-              <div>
+              <div class="sidebar-mid">
                 <div class="section-title">TOOLS</div>
                 <p>VS Code, Google Colab, Arduino</p>
                 <p>WordPress, GitHub, Roboflow</p>
                 <p>Raspberry Pi</p>
               </div>
-            </div>
+              <div class="sidebar-actions">
+                <button class="back-btn">
+                  <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <a href="assets/Chua - CV.pdf" download="Chua - CV" class="download-btn">
+                  <i class="fas fa-download"></i> Download CV
+                </a>
+              </div>
+            </aside>
 
             <!-- Main Resume Content -->
             <div class="resume-main">
               <div class="main-section">
-                <h2>Education</h2>
+                <h2><i class="fas fa-graduation-cap"></i> Education</h2>
                 <ul>
-                  <li>University of Cebu - Main (2022–Present)</li>
-                  <li>University of Cebu - PRI (2019–2022)</li>
-                  <li>Maguikay National High School (2015–2019)</li>
-                  <li>Maguikay Elementary School (2009–2015)</li>
+                  <li>University of Cebu - Main <span class="year">2022–Present</span></li>
+                  <li>University of Cebu - PRI <span class="year">2019–2022</span></li>
+                  <li>Maguikay National High School <span class="year">2015–2019</span></li>
+                  <li>Maguikay Elementary School <span class="year">2009–2015</span></li>
                 </ul>
               </div>
               <div class="main-section">
-                <h2>Certifications</h2>
+                <h2><i class="fas fa-certificate"></i> Certifications</h2>
                 <ul>
-                  <li>C Programming, Python Fundamentals – Apr 2023</li>
-                  <li>Bot Brawl, Subnetting – Oct 2023</li>
-                  <li>CpE Convention – Feb 2024</li>
-                  <li>Robotics Competition – Jul 2024</li>
-                  <li>WordPress Seminar – Mar–Apr 2025</li>
+                  <li>C Programming, Python Fundamentals <span class="year">Apr 2023</span></li>
+                  <li>Bot Brawl, Subnetting <span class="year">Oct 2023</span></li>
+                  <li>CpE Convention <span class="year">Feb 2024</span></li>
+                  <li>Robotics Competition <span class="year">Jul 2024</span></li>
+                  <li>WordPress Seminar <span class="year">Mar–Apr 2025</span></li>
                 </ul>
               </div>
               <div class="main-section">
-                <h2>Skills</h2>
+                <h2><i class="fas fa-code"></i> Skills</h2>
                 <div class="skill-list">
-                  <p>Computer Literacy</p>
-                  <p>C/C++, Python</p>
-                  <p>Web Dev (HTML/CSS/JS)</p>
-                  <p>Git & GitHub</p>
-                  <p>Object Recognition</p>
-                  <p>Model Training</p>
-                  <p>Electronics, Soldering</p>
+                  <span class="skill-tag">Computer Literacy</span>
+                  <span class="skill-tag">C / C++</span>
+                  <span class="skill-tag">Python</span>
+                  <span class="skill-tag">HTML / CSS / JS</span>
+                  <span class="skill-tag">Git & GitHub</span>
+                  <span class="skill-tag">Object Recognition</span>
+                  <span class="skill-tag">Model Training</span>
+                  <span class="skill-tag">Electronics</span>
+                  <span class="skill-tag">Soldering</span>
                 </div>
               </div>
               <div class="main-section">
-                <h2>Projects</h2>
-                <div class="project-list">
-                  <p>Sumobot</p>
-                  <p>To-do List Website</p>
-                  <p>Objective Detection</p>
-                  <p>Professional Website</p>
-                  <p>4-bit Decoder/Counter</p>
+                <h2><i class="fas fa-folder-open"></i> Projects</h2>
+                <div class="skill-list">
+                  <span class="skill-tag">Sumobot</span>
+                  <span class="skill-tag">To-do List Website</span>
+                  <span class="skill-tag">Object Detection</span>
+                  <span class="skill-tag">Professional Website</span>
+                  <span class="skill-tag">4-bit Decoder/Counter</span>
                 </div>
               </div>
               <div class="main-section">
-                <h2>References</h2>
-                <p class="contact">
-                  Engr. Crisanto Natividad<br />
-                  Faculty, CpE Department, Univ. of Cebu<br />
-                  📧 engrcrisnatividad@gmail.com<br />
-                  📞 0949-876-7762
-                </p>
+                <h2><i class="fas fa-user-tie"></i> References</h2>
+                <div class="reference-card">
+                  <p class="ref-name">Engr. Crisanto Natividad</p>
+                  <p class="ref-title">Faculty, CpE Department, University of Cebu</p>
+                  <p><i class="fas fa-envelope"></i> engrcrisnatividad@gmail.com</p>
+                  <p><i class="fas fa-phone"></i> 0949-876-7762</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- Works/Portfolio Section -->
+        <!-- Works / Gallery Section -->
         <section class="below">
           <div class="below-container">
-            <h1 class="myworks">My Works &amp; Hobbies</h1>
-
-            <!-- Tabs -->
-            <nav class="below-navbar" aria-label="Gallery tabs">
-              <ul>
-                <li><a href="#top" id="home-tab">Home</a></li>
-                <li><a href="#work1" id="school-tab" class="active">School</a></li>
-                <li><a href="#work2" id="personal-tab">Personal</a></li>
-              </ul>
-            </nav>
+            <!-- Sticky Gallery Header -->
+            <div class="gallery-header">
+              <h1 class="myworks">My Works &amp; Hobbies</h1>
+              <nav class="below-navbar" aria-label="Gallery tabs">
+                <a href="#" id="home-tab" class="home-tab-link">
+                  <i class="fas fa-arrow-left"></i>
+                </a>
+                <ul>
+                  <li><a href="#work1" id="school-tab" class="active">School</a></li>
+                  <li><a href="#work2" id="personal-tab">Personal</a></li>
+                </ul>
+              </nav>
+            </div>
 
             <!-- School Gallery -->
             <div class="frame-one works-gallery active" id="work1">
               <img src="assets/00.jpg" class="gallery-img" alt="School work 1" loading="lazy" />
               <img src="assets/01.jpg" class="gallery-img" alt="School work 2" loading="lazy" />
-              <video class="gallery-video" width="200" height="150" preload="none">
-                <source src="assets/00.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              <video class="gallery-video" width="200" height="150" preload="none">
-                <source src="assets/01.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              <video class="gallery-video" width="200" height="150" preload="none">
-                <source src="assets/02.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <div class="video-wrapper">
+                <video class="gallery-video" preload="none">
+                  <source src="assets/00.mp4" type="video/mp4" />
+                </video>
+                <div class="play-overlay" aria-hidden="true"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="video-wrapper">
+                <video class="gallery-video" preload="none">
+                  <source src="assets/01.mp4" type="video/mp4" />
+                </video>
+                <div class="play-overlay" aria-hidden="true"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="video-wrapper">
+                <video class="gallery-video" preload="none">
+                  <source src="assets/02.mp4" type="video/mp4" />
+                </video>
+                <div class="play-overlay" aria-hidden="true"><i class="fas fa-play"></i></div>
+              </div>
               <img src="assets/02.jpg" class="gallery-img" alt="School work 3" loading="lazy" />
               <img src="assets/03.jpg" class="gallery-img" alt="School work 4" loading="lazy" />
               <img src="assets/04.jpg" class="gallery-img" alt="School work 5" loading="lazy" />
@@ -222,27 +229,29 @@
               <img src="assets/06.jpg" class="gallery-img" alt="School work 7" loading="lazy" />
               <img src="assets/07.png" class="gallery-img" alt="School work 8" loading="lazy" />
               <img src="assets/08.jpg" class="gallery-img" alt="School work 9" loading="lazy" />
-              <video class="gallery-video" width="200" height="150" preload="none">
-                <source src="assets/09.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <div class="video-wrapper">
+                <video class="gallery-video" preload="none">
+                  <source src="assets/09.mp4" type="video/mp4" />
+                </video>
+                <div class="play-overlay" aria-hidden="true"><i class="fas fa-play"></i></div>
+              </div>
             </div>
 
             <!-- Personal Gallery -->
             <div class="frame-two works-gallery" id="work2">
-              <img src="assets/personal/00.jpg" class="gallery-img" alt="Personal work 1" loading="lazy" />
-              <img src="assets/personal/01.jpg" class="gallery-img" alt="Personal work 2" loading="lazy" />
-              <img src="assets/personal/02.jpg" class="gallery-img" alt="Personal work 3" loading="lazy" />
-              <img src="assets/personal/03.jpg" class="gallery-img" alt="Personal work 4" loading="lazy" />
-              <img src="assets/personal/04.jpg" class="gallery-img" alt="Personal work 5" loading="lazy" />
-              <img src="assets/personal/05.jpg" class="gallery-img" alt="Personal work 6" loading="lazy" />
-              <img src="assets/personal/06.jpg" class="gallery-img" alt="Personal work 7" loading="lazy" />
-              <img src="assets/personal/07.jpg" class="gallery-img" alt="Personal work 8" loading="lazy" />
-              <img src="assets/personal/08.jpg" class="gallery-img" alt="Personal work 9" loading="lazy" />
-              <img src="assets/personal/09.jpg" class="gallery-img" alt="Personal work 10" loading="lazy" />
-              <img src="assets/personal/10.jpg" class="gallery-img" alt="Personal work 11" loading="lazy" />
-              <img src="assets/personal/11.jpg" class="gallery-img" alt="Personal work 12" loading="lazy" />
-              <img src="assets/personal/12.jpg" class="gallery-img" alt="Personal work 13" loading="lazy" />
+              <img src="assets/personal/00.jpg" class="gallery-img" alt="Personal 1" loading="lazy" />
+              <img src="assets/personal/01.jpg" class="gallery-img" alt="Personal 2" loading="lazy" />
+              <img src="assets/personal/02.jpg" class="gallery-img" alt="Personal 3" loading="lazy" />
+              <img src="assets/personal/03.jpg" class="gallery-img" alt="Personal 4" loading="lazy" />
+              <img src="assets/personal/04.jpg" class="gallery-img" alt="Personal 5" loading="lazy" />
+              <img src="assets/personal/05.jpg" class="gallery-img" alt="Personal 6" loading="lazy" />
+              <img src="assets/personal/06.jpg" class="gallery-img" alt="Personal 7" loading="lazy" />
+              <img src="assets/personal/07.jpg" class="gallery-img" alt="Personal 8" loading="lazy" />
+              <img src="assets/personal/08.jpg" class="gallery-img" alt="Personal 9" loading="lazy" />
+              <img src="assets/personal/09.jpg" class="gallery-img" alt="Personal 10" loading="lazy" />
+              <img src="assets/personal/10.jpg" class="gallery-img" alt="Personal 11" loading="lazy" />
+              <img src="assets/personal/11.jpg" class="gallery-img" alt="Personal 12" loading="lazy" />
+              <img src="assets/personal/12.jpg" class="gallery-img" alt="Personal 13" loading="lazy" />
             </div>
           </div>
 
@@ -254,7 +263,6 @@
         </section>
       </div>
     </main>
-    <!-- Main JavaScript file -->
     <script src="script.js"></script>
   </body>
 </html>
