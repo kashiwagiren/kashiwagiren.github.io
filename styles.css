@@ -1817,3 +1817,216 @@ section {
     padding: 8px 10px;
   }
 }
+
+/* ============================================================
+   Responsive — Landscape Mobile  (phone rotated)
+   Target: width > height, height ≤ 500px
+   ============================================================ */
+@media (orientation: landscape) and (max-height: 500px) {
+
+  /* Use dynamic viewport so browser chrome doesn't clip content */
+  .scroll-container {
+    height: 100dvh;
+  }
+
+  section {
+    height: 100dvh;
+  }
+
+  /* ── Intro ── */
+  .intro-container {
+    padding: 0 32px;
+    text-align: left;
+  }
+
+  .type,
+  .type-1 {
+    font-size: clamp(1rem, 4.5vh, 1.6rem);
+    text-align: left;
+    padding: 0;
+  }
+
+  .text {
+    font-size: clamp(0.8rem, 2.8vh, 1rem);
+    text-align: left;
+    padding: 0;
+    margin-top: 6px;
+  }
+
+  .btn-group {
+    justify-content: flex-start;
+    margin-top: 14px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+
+  /* ── About ── */
+  .main-container {
+    overflow-y: auto;
+  }
+
+  /* Restore side-by-side in landscape (override the portrait column layout) */
+  .profile-container {
+    flex-direction: row !important;
+    text-align: left !important;
+    gap: 20px;
+    padding: 18px 22px;
+    align-items: center;
+    width: min(92%, 640px);
+    overflow-y: visible;
+  }
+
+  .profile-photo {
+    flex-shrink: 0;
+  }
+
+  .profile-photo img {
+    width: 86px !important;
+    height: 86px !important;
+  }
+
+  .about-text h1 {
+    font-size: 1.4rem !important;
+  }
+
+  .about-text > p {
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+
+  .social-icons {
+    justify-content: flex-start;
+  }
+
+  .btn-group {
+    justify-content: flex-start;
+  }
+
+  /* ── Resume ── */
+  .frame-section {
+    height: 100dvh;
+    overflow: hidden;
+    min-height: unset;
+  }
+
+  /* Restore 2-column layout in landscape (override portrait single-column) */
+  .frame-section .resume-container {
+    grid-template-columns: 170px 1fr !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  .frame-section .sidebar {
+    overflow-y: auto;
+    padding: 1rem 0.9rem;
+  }
+
+  .sidebar-avatar {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 8px;
+  }
+
+  .sidebar-profile h1 {
+    font-size: 0.72rem !important;
+  }
+
+  .sidebar-actions {
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 0.6rem;
+  }
+
+  .back-btn,
+  .download-btn {
+    flex: none;
+    font-size: 0.72rem;
+    padding: 7px 10px;
+  }
+
+  .frame-section .resume-main {
+    overflow-y: auto;
+    padding: 0.9rem 1rem;
+  }
+
+  .main-section h2 {
+    font-size: 0.78rem;
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+  }
+
+  .timeline-list li {
+    font-size: 0.78rem;
+    padding: 3px 0;
+  }
+
+  .reference-card {
+    padding: 10px 12px;
+  }
+
+  /* ── Gallery ── */
+  .below {
+    height: 100dvh;
+  }
+
+  .below-container {
+    height: 100dvh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gallery-header {
+    padding: 7px 14px;
+    flex-shrink: 0;
+  }
+
+  /* 4-column bento with short rows in landscape */
+  .works-gallery {
+    grid-template-columns: repeat(4, 1fr) !important;
+    grid-auto-rows: 100px !important;
+    gap: 6px !important;
+    padding: 8px 12px !important;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  /* Keep 2×2 featured item */
+  .works-gallery > .gallery-item:first-child {
+    grid-column: span 2 !important;
+    grid-row: span 2 !important;
+  }
+
+  /* Videos 2-wide */
+  .works-gallery > .video-wrapper {
+    grid-column: span 2 !important;
+  }
+
+  /* ── Lightbox ── */
+  .lightbox-overlay {
+    align-items: center;
+  }
+
+  .lightbox-content img,
+  .lightbox-content video {
+    max-height: 78dvh;
+    max-width: 85dvw;
+  }
+
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
+
+  .lightbox-prev,
+  .lightbox-next {
+    width: 36px;
+    height: 36px;
+    font-size: 0.8rem;
+  }
+}
