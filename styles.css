@@ -49,6 +49,8 @@ body {
   overflow-x: hidden;
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* ============================================================
@@ -1319,5 +1321,203 @@ section {
 
   .myworks {
     font-size: 0.88rem;
+  }
+}
+
+/* ============================================================
+   Allow text selection in resume content area
+   ============================================================ */
+.frame-section .resume-main,
+.reference-card p {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* ============================================================
+   Resume Sidebar — Profile photo block
+   ============================================================ */
+.sidebar-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 1.4rem;
+  margin-bottom: 0.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+/* Accent glow line at very top of sidebar */
+.sidebar-profile::before {
+  content: "";
+  position: absolute;
+  top: -2rem;
+  left: -1.6rem;
+  right: -1.6rem;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.7;
+}
+
+.sidebar-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--accent-dark);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.18), 0 4px 20px rgba(0, 0, 0, 0.5);
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.sidebar-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sidebar-profile h1 {
+  font-size: 0.82rem !important;
+  font-weight: 700;
+  color: #f1f5f9 !important;
+  line-height: 1.3;
+  margin-bottom: 4px !important;
+  letter-spacing: 0.03em;
+}
+
+.sidebar-degree {
+  display: inline-block;
+  padding: 2px 10px;
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--accent);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: var(--radius-full);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   Resume Sidebar — Tool Tags
+   ============================================================ */
+.tool-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.tool-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 500;
+  transition: all var(--transition);
+}
+
+.tool-tag i {
+  font-size: 0.68rem;
+  color: var(--accent);
+}
+
+.tool-tag:hover {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: rgba(99, 102, 241, 0.3);
+  color: #f1f5f9;
+}
+
+/* ============================================================
+   Resume — Timeline List (Education & Certifications)
+   ============================================================ */
+.timeline-list {
+  list-style: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  position: relative;
+  padding-left: 22px !important;
+}
+
+.timeline-list::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent), #c7d2fe, transparent);
+  opacity: 0.5;
+}
+
+.timeline-list li {
+  position: relative;
+  padding: 7px 10px 7px 14px !important;
+  border-radius: var(--radius) !important;
+}
+
+.timeline-list li::before {
+  content: "";
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-dark);
+  border: 2px solid var(--resume-bg);
+  box-shadow: 0 0 0 1.5px var(--accent-dark);
+  z-index: 1;
+}
+
+.timeline-list li:first-child::before {
+  background: var(--accent);
+  box-shadow: 0 0 0 1.5px var(--accent), 0 0 8px rgba(99, 102, 241, 0.4);
+}
+
+/* ============================================================
+   Gallery — Better video placeholder & play button
+   ============================================================ */
+.video-wrapper {
+  background: linear-gradient(135deg, #0f0f1a 0%, #1a1040 50%, #0d0d18 100%) !important;
+}
+
+.play-overlay {
+  background: rgba(0, 0, 0, 0.25) !important;
+}
+
+.play-overlay i {
+  font-size: 1.8rem !important;
+  background: rgba(99, 102, 241, 0.8);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 8px rgba(99, 102, 241, 0.18), 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding-left: 4px; /* optical center for play icon */
+}
+
+.video-wrapper:hover .play-overlay i {
+  transform: scale(1.12);
+  box-shadow: 0 0 0 12px rgba(99, 102, 241, 0.12), 0 4px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* ============================================================
+   Gallery — section label on hover (desktop only)
+   ============================================================ */
+@media (min-width: 769px) {
+  .works-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 }

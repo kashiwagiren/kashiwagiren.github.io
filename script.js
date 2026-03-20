@@ -219,9 +219,13 @@ document.querySelector(".cv-button").addEventListener("click", function () {
 // ============================================================
 document.querySelector(".back-btn").addEventListener("click", function () {
   document.querySelector(".frame-section").style.display = "none";
-  document.querySelector(".main").style.display = "flex";
   const belowSection = document.querySelector(".below");
   if (belowSection) belowSection.style.display = "none";
+  const mainSection = document.querySelector(".main");
+  if (mainSection) {
+    mainSection.style.display = "flex";
+    setTimeout(() => mainSection.scrollIntoView({ behavior: "smooth" }), 50);
+  }
 });
 
 // ============================================================
@@ -239,10 +243,13 @@ document.querySelector(".works-button").addEventListener("click", function () {
 // ============================================================
 document.getElementById("home-tab").addEventListener("click", function (e) {
   e.preventDefault();
-  const mainSection = document.querySelector(".main");
   const belowSection = document.querySelector(".below");
-  if (mainSection) mainSection.style.display = "flex";
   if (belowSection) belowSection.style.display = "none";
+  const mainSection = document.querySelector(".main");
+  if (mainSection) {
+    mainSection.style.display = "flex";
+    setTimeout(() => mainSection.scrollIntoView({ behavior: "smooth" }), 50);
+  }
   setActiveTab(null);
 });
 
