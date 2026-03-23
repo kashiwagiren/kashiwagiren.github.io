@@ -210,7 +210,6 @@ document.querySelector(".cv-button").addEventListener("click", function () {
   document.querySelector(".frame-section").style.display = "flex";
   const belowSection = document.querySelector(".below");
   if (belowSection) belowSection.style.display = "none";
-  // Re-trigger resume section reveal
   initResumeReveal();
 });
 
@@ -269,7 +268,6 @@ function setActiveTab(activeId) {
 function switchGallery(show, hide, tabId) {
   if (show.classList.contains("active")) return;
 
-  // Fade out current
   hide.style.opacity = "0";
   hide.style.transform = "scale(0.97)";
   hide.style.transition = "opacity 0.15s ease, transform 0.15s ease";
@@ -283,7 +281,7 @@ function switchGallery(show, hide, tabId) {
     show.classList.add("active");
     show.scrollTop = 0;
 
-    // Stagger entrance of each item
+    // Stagger entrance
     const items = show.querySelectorAll(".gallery-item, .video-wrapper");
     items.forEach((item, i) => {
       item.style.opacity = "0";
@@ -295,7 +293,6 @@ function switchGallery(show, hide, tabId) {
       }));
     });
 
-    // Clean up inline transitions after animation
     const duration = items.length * 40 + 350;
     setTimeout(() => {
       items.forEach((item) => {
@@ -306,7 +303,6 @@ function switchGallery(show, hide, tabId) {
     }, duration);
 
     setActiveTab(tabId);
-    // Rebuild lightbox list for the new active gallery
     buildGalleryList();
   }, 150);
 }
@@ -344,8 +340,12 @@ function initGalleryEnhancements() {
   });
 
   // Count badges
-  const schoolCount = document.querySelectorAll(".frame-one .gallery-item, .frame-one .video-wrapper").length;
-  const personalCount = document.querySelectorAll(".frame-two .gallery-item, .frame-two .video-wrapper").length;
+  const schoolCount = document.querySelectorAll(
+    ".frame-one .gallery-item, .frame-one .video-wrapper"
+  ).length;
+  const personalCount = document.querySelectorAll(
+    ".frame-two .gallery-item, .frame-two .video-wrapper"
+  ).length;
   const sc = document.getElementById("school-count");
   const pc = document.getElementById("personal-count");
   if (sc) sc.textContent = schoolCount;
@@ -408,7 +408,7 @@ function nextImage() {
   showLightboxImage(currentImageIndex);
 }
 
-// Attach click listeners to gallery images
+// Click on gallery images → open lightbox
 document.querySelectorAll(".gallery-item").forEach((item) => {
   item.addEventListener("click", () => {
     buildGalleryList();
@@ -430,9 +430,9 @@ fullscreenView.addEventListener("click", (e) => {
 // Keyboard navigation
 document.addEventListener("keydown", (e) => {
   if (fullscreenView.style.display !== "flex") return;
-  if (e.key === "Escape")       closeLightbox();
-  if (e.key === "ArrowLeft")    prevImage();
-  if (e.key === "ArrowRight")   nextImage();
+  if (e.key === "Escape")      closeLightbox();
+  if (e.key === "ArrowLeft")   prevImage();
+  if (e.key === "ArrowRight")  nextImage();
 });
 
 // Touch swipe support
@@ -463,22 +463,23 @@ fullscreenVideoView.style.cssText = `
   position: fixed;
   z-index: 9999;
   top: 0; left: 0; width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.92);
+  background: rgba(0,0,0,0.94);
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 `;
 
 const fullscreenVideo = document.createElement("video");
 fullscreenVideo.controls = true;
 fullscreenVideo.style.cssText = `
-  width: 1280px;
-  height: 720px;
-  background: #000;
-  box-shadow: 0 0 40px rgba(0,0,0,0.8);
-  border-radius: 12px;
-  max-width: 95vw;
+  max-width: 92vw;
   max-height: 88vh;
+  width: auto;
+  height: auto;
+  background: #000;
+  box-shadow: 0 0 60px rgba(0,0,0,0.9), 0 0 0 1px rgba(99,102,241,0.18);
+  border-radius: 14px;
   display: block;
 `;
 
@@ -496,18 +497,28 @@ closeVideoBtn.style.cssText = `
   border: none;
   cursor: pointer;
   z-index: 10001;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
+  transition: background 0.2s ease, color 0.2s ease;
 `;
 
 fullscreenVideoView.appendChild(fullscreenVideo);
 fullscreenVideoView.appendChild(closeVideoBtn);
 document.body.appendChild(fullscreenVideoView);
+
+closeVideoBtn.addEventListener("mouseenter", () => {
+  closeVideoBtn.style.background = "rgba(255,255,255,0.15)";
+  closeVideoBtn.style.color = "#fff";
+});
+closeVideoBtn.addEventListener("mouseleave", () => {
+  closeVideoBtn.style.background = "rgba(255,255,255,0.08)";
+  closeVideoBtn.style.color = "rgba(255,255,255,0.7)";
+});
 
 function closeVideoLightbox() {
   fullscreenVideo.pause();
@@ -522,18 +533,24 @@ fullscreenVideoView.addEventListener("click", (e) => {
   if (e.target === fullscreenVideoView) closeVideoLightbox();
 });
 
-// Keyboard close for video
 document.addEventListener("keydown", (e) => {
   if (fullscreenVideoView.style.display === "flex" && e.key === "Escape") {
     closeVideoLightbox();
   }
 });
 
-// Click on video wrapper opens fullscreen
+// Click on video wrapper → open fullscreen video
 document.querySelectorAll(".video-wrapper").forEach((wrapper) => {
   wrapper.addEventListener("click", () => {
-    const vid = wrapper.querySelector(".gallery-video");
-    const src = vid.src || vid.querySelector("source")?.src || "";
+    // Prefer data-src attribute (set on wrapper), fallback to source element
+    const src =
+      wrapper.dataset.src ||
+      wrapper.querySelector("source")?.src ||
+      wrapper.querySelector("video")?.src ||
+      "";
+
+    if (!src) return;
+
     fullscreenVideo.src = src;
     fullscreenVideo.currentTime = 0;
     fullscreenVideo.muted = false;

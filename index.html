@@ -30,7 +30,7 @@
 
     <main>
       <div class="scroll-container">
-        <!-- Intro Section -->
+        <!-- ─── Intro Section ─── -->
         <section class="intro">
           <div class="intro-container">
             <h2 class="type-1">Hello, I'm Kieth.</h2>
@@ -54,7 +54,7 @@
           </div>
         </section>
 
-        <!-- About Section -->
+        <!-- ─── About Section ─── -->
         <section class="main">
           <div class="main-container">
             <div class="profile-container reveal">
@@ -99,7 +99,7 @@
           </div>
         </section>
 
-        <!-- Resume Section -->
+        <!-- ─── Resume Section ─── -->
         <section class="frame-section">
           <div class="resume-container">
             <!-- Sidebar -->
@@ -168,7 +168,7 @@
                   <span class="skill-tag">C / C++</span>
                   <span class="skill-tag">Python</span>
                   <span class="skill-tag">HTML / CSS / JS</span>
-                  <span class="skill-tag">Git & GitHub</span>
+                  <span class="skill-tag">Git &amp; GitHub</span>
                   <span class="skill-tag">Object Recognition</span>
                   <span class="skill-tag">Model Training</span>
                   <span class="skill-tag">Electronics</span>
@@ -198,12 +198,12 @@
           </div>
         </section>
 
-        <!-- Works / Gallery Section -->
+        <!-- ─── Works / Gallery Section ─── -->
         <section class="below">
           <div class="below-container">
-            <!-- Sticky Gallery Header -->
+            <!-- Gallery Header -->
             <div class="gallery-header">
-              <a href="#" id="home-tab" class="home-tab-link">
+              <a href="#" id="home-tab" class="home-tab-link" aria-label="Back to home">
                 <i class="fas fa-arrow-left"></i>
               </a>
               <nav class="below-navbar" aria-label="Gallery tabs">
@@ -215,58 +215,79 @@
               <div class="gallery-header-spacer"></div>
             </div>
 
-            <!-- School Gallery -->
+            <!-- ── School Gallery ── -->
             <div class="frame-one works-gallery active" id="work1">
-              <div class="gallery-item"><img src="assets/00.jpg" class="gallery-img" alt="School work 1" loading="lazy" /></div>
-              <div class="gallery-item"><img src="assets/01.jpg" class="gallery-img" alt="School work 2" loading="lazy" /></div>
-              <div class="video-wrapper">
-                <video class="gallery-video" preload="none">
+              <!-- Images -->
+              <div class="gallery-item" data-type="photo">
+                <img src="assets/00.jpg" class="gallery-img" alt="School work 1" loading="lazy" />
+              </div>
+              <div class="gallery-item" data-type="photo">
+                <img src="assets/01.jpg" class="gallery-img" alt="School work 2" loading="lazy" />
+              </div>
+              <!-- Videos — poster uses matching .jpg for preview -->
+              <div class="video-wrapper" data-src="assets/00.mp4" data-type="video">
+                <video class="gallery-video" preload="none" poster="assets/00.jpg" muted playsinline>
                   <source src="assets/00.mp4" type="video/mp4" />
                 </video>
                 <div class="play-overlay" aria-hidden="true"><i class="fas fa-play"></i></div>
               </div>
-              <div class="video-wrapper">
-                <video class="gallery-video" preload="none">
+              <div class="video-wrapper" data-src="assets/01.mp4" data-type="video">
+                <video class="gallery-video" preload="none" poster="assets/01.jpg" muted playsinline>
                   <source src="assets/01.mp4" type="video/mp4" />
                 </video>
                 <div class="play-overlay" aria-hidden="true"><i class="fas fa-play"></i></div>
               </div>
-              <div class="video-wrapper">
-                <video class="gallery-video" preload="none">
+              <div class="video-wrapper" data-src="assets/02.mp4" data-type="video">
+                <video class="gallery-video" preload="none" poster="assets/02.jpg" muted playsinline>
                   <source src="assets/02.mp4" type="video/mp4" />
                 </video>
                 <div class="play-overlay" aria-hidden="true"><i class="fas fa-play"></i></div>
               </div>
-              <div class="gallery-item"><img src="assets/02.jpg" class="gallery-img" alt="School work 3" loading="lazy" /></div>
-              <div class="gallery-item"><img src="assets/03.jpg" class="gallery-img" alt="School work 4" loading="lazy" /></div>
-              <div class="gallery-item"><img src="assets/04.jpg" class="gallery-img" alt="School work 5" loading="lazy" /></div>
-              <div class="gallery-item"><img src="assets/05.jpg" class="gallery-img" alt="School work 6" loading="lazy" /></div>
-              <div class="gallery-item"><img src="assets/06.jpg" class="gallery-img" alt="School work 7" loading="lazy" /></div>
-              <div class="gallery-item"><img src="assets/07.png" class="gallery-img" alt="School work 8" loading="lazy" /></div>
-              <div class="gallery-item"><img src="assets/08.jpg" class="gallery-img" alt="School work 9" loading="lazy" /></div>
-              <div class="video-wrapper">
-                <video class="gallery-video" preload="none">
+              <!-- More images -->
+              <div class="gallery-item" data-type="photo">
+                <img src="assets/02.jpg" class="gallery-img" alt="School work 3" loading="lazy" />
+              </div>
+              <div class="gallery-item" data-type="photo">
+                <img src="assets/03.jpg" class="gallery-img" alt="School work 4" loading="lazy" />
+              </div>
+              <div class="gallery-item" data-type="photo">
+                <img src="assets/04.jpg" class="gallery-img" alt="School work 5" loading="lazy" />
+              </div>
+              <div class="gallery-item" data-type="photo">
+                <img src="assets/05.jpg" class="gallery-img" alt="School work 6" loading="lazy" />
+              </div>
+              <div class="gallery-item" data-type="photo">
+                <img src="assets/06.jpg" class="gallery-img" alt="School work 7" loading="lazy" />
+              </div>
+              <div class="gallery-item" data-type="photo">
+                <img src="assets/07.png" class="gallery-img" alt="School work 8" loading="lazy" />
+              </div>
+              <div class="gallery-item" data-type="photo">
+                <img src="assets/08.jpg" class="gallery-img" alt="School work 9" loading="lazy" />
+              </div>
+              <div class="video-wrapper" data-src="assets/09.mp4" data-type="video">
+                <video class="gallery-video" preload="none" poster="assets/08.jpg" muted playsinline>
                   <source src="assets/09.mp4" type="video/mp4" />
                 </video>
                 <div class="play-overlay" aria-hidden="true"><i class="fas fa-play"></i></div>
               </div>
             </div>
 
-            <!-- Personal Gallery -->
+            <!-- ── Personal Gallery ── -->
             <div class="frame-two works-gallery" id="work2">
-              <div class="gallery-item"><img src="assets/personal/00.jpg" class="gallery-img" alt="Personal 1" loading="lazy" /></div>
-              <div class="gallery-item"><img src="assets/personal/01.jpg" class="gallery-img" alt="Personal 2" loading="lazy" /></div>
-              <div class="gallery-item"><img src="assets/personal/02.jpg" class="gallery-img" alt="Personal 3" loading="lazy" /></div>
-              <div class="gallery-item"><img src="assets/personal/03.jpg" class="gallery-img" alt="Personal 4" loading="lazy" /></div>
-              <div class="gallery-item"><img src="assets/personal/04.jpg" class="gallery-img" alt="Personal 5" loading="lazy" /></div>
-              <div class="gallery-item"><img src="assets/personal/05.jpg" class="gallery-img" alt="Personal 6" loading="lazy" /></div>
-              <div class="gallery-item"><img src="assets/personal/06.jpg" class="gallery-img" alt="Personal 7" loading="lazy" /></div>
-              <div class="gallery-item"><img src="assets/personal/07.jpg" class="gallery-img" alt="Personal 8" loading="lazy" /></div>
-              <div class="gallery-item"><img src="assets/personal/08.jpg" class="gallery-img" alt="Personal 9" loading="lazy" /></div>
-              <div class="gallery-item"><img src="assets/personal/09.jpg" class="gallery-img" alt="Personal 10" loading="lazy" /></div>
-              <div class="gallery-item"><img src="assets/personal/10.jpg" class="gallery-img" alt="Personal 11" loading="lazy" /></div>
-              <div class="gallery-item"><img src="assets/personal/11.jpg" class="gallery-img" alt="Personal 12" loading="lazy" /></div>
-              <div class="gallery-item"><img src="assets/personal/12.jpg" class="gallery-img" alt="Personal 13" loading="lazy" /></div>
+              <div class="gallery-item" data-type="photo"><img src="assets/personal/00.jpg" class="gallery-img" alt="Personal 1" loading="lazy" /></div>
+              <div class="gallery-item" data-type="photo"><img src="assets/personal/01.jpg" class="gallery-img" alt="Personal 2" loading="lazy" /></div>
+              <div class="gallery-item" data-type="photo"><img src="assets/personal/02.jpg" class="gallery-img" alt="Personal 3" loading="lazy" /></div>
+              <div class="gallery-item" data-type="photo"><img src="assets/personal/03.jpg" class="gallery-img" alt="Personal 4" loading="lazy" /></div>
+              <div class="gallery-item" data-type="photo"><img src="assets/personal/04.jpg" class="gallery-img" alt="Personal 5" loading="lazy" /></div>
+              <div class="gallery-item" data-type="photo"><img src="assets/personal/05.jpg" class="gallery-img" alt="Personal 6" loading="lazy" /></div>
+              <div class="gallery-item" data-type="photo"><img src="assets/personal/06.jpg" class="gallery-img" alt="Personal 7" loading="lazy" /></div>
+              <div class="gallery-item" data-type="photo"><img src="assets/personal/07.jpg" class="gallery-img" alt="Personal 8" loading="lazy" /></div>
+              <div class="gallery-item" data-type="photo"><img src="assets/personal/08.jpg" class="gallery-img" alt="Personal 9" loading="lazy" /></div>
+              <div class="gallery-item" data-type="photo"><img src="assets/personal/09.jpg" class="gallery-img" alt="Personal 10" loading="lazy" /></div>
+              <div class="gallery-item" data-type="photo"><img src="assets/personal/10.jpg" class="gallery-img" alt="Personal 11" loading="lazy" /></div>
+              <div class="gallery-item" data-type="photo"><img src="assets/personal/11.jpg" class="gallery-img" alt="Personal 12" loading="lazy" /></div>
+              <div class="gallery-item" data-type="photo"><img src="assets/personal/12.jpg" class="gallery-img" alt="Personal 13" loading="lazy" /></div>
             </div>
           </div>
 
